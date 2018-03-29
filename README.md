@@ -1,6 +1,8 @@
 # Oh My Home Documentation
-[![wercker status](https://app.wercker.com/status/2eddcfd2b122ba5a06ef9f0b28140cb6/s/master "wercker status")](https://app.wercker.com/project/byKey/2eddcfd2b122ba5a06ef9f0b28140cb6)
+[![Travic CI](https://travis-ci.org/joshuaalpuerto/oh-my-home.svg?branch=master)](https://travis-ci.org)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+![Dependecies](https://david-dm.org/joshuaalpuerto/oh-my-home/status.svg)
+![Dev Dependecies](https://david-dm.org/joshuaalpuerto/oh-my-home/dev-status.svg)
 
 ## Development Environment Setup
 
