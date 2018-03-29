@@ -3,6 +3,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ![Dependecies](https://david-dm.org/joshuaalpuerto/oh-my-home/status.svg)
 ![Dev Dependecies](https://david-dm.org/joshuaalpuerto/oh-my-home/dev-status.svg)
+[![Coverage Status](https://coveralls.io/repos/github/joshuaalpuerto/oh-my-home/badge.svg?branch=master)](https://coveralls.io/github/joshuaalpuerto/oh-my-home?branch=master)
 
 ## Development Environment Setup
 
