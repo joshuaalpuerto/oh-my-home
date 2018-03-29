@@ -7,6 +7,11 @@ before_install:
  - npm install -g standard@10.0.3
  - npm install -g babel-eslint@8.0.3
  - npm install -g snazzy
-cache: yarn
 install:
-   - yarn
+  - yarn
+after_script:
+ - npm run coveralls
+cache:
+  yarn: true
+  directories:
+    - node_modules
