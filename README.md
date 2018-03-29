@@ -109,3 +109,8 @@ write head tags can be found [here](https://github.com/nfl/react-helmet#examples
 - [jest](https://facebook.github.io/jest/) - Complete and easy to set-up JavaScript testing solution. Works out of the box for any React project. 
 - [enzyme](https://github.com/airbnb/enzyme) - JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
 
+### CLI
+- `yarn test` - run all unit test
+- `yarn test:watch` - run all unit tests and watch it interactively.
+- `yarn test:coverage` - run all unit test with coverage.
+
