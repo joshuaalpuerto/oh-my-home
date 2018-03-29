@@ -5,10 +5,10 @@
 ## Development Environment Setup
 
 1. Make sure you have `nvm`, node `v8.9.0 and up` installed
-2. Install `yarn` - `npm install -g yarn`.
+2. Install `yarn` - `npm install -g yarn@0.27.5`.
 3. Use a smart `.npmrc`. By default, `npm` doesn’t save installed dependencies to package.json (and you should always track your dependencies!).
-4. `npm install -g standard` # standardjs
-5. `npm install -g babel-eslint`
+4. `npm install -g standard@10.0.3` # standardjs
+5. `npm install -g babel-eslint@8.0.3`
 6. `npm install -g snazzy`
 
 ```bash
