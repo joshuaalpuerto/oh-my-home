@@ -9,8 +9,10 @@ before_install:
  - npm install -g snazzy
 install:
   - yarn
+script:
+  - yarn test:coverage
 after_script:
- - npm run coveralls
+  - yarn coveralls
 cache:
   yarn: true
   directories:
