@@ -1,7 +1,7 @@
-import Section from './Section';
+import Section from './Section'
 
 const CenteredSection = Section.extend`
   text-align: center;
-`;
+`
 
-export default CenteredSection;
+export default CenteredSection
