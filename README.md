@@ -23,7 +23,7 @@ When adding new packages, always use `yarn add --exact <package>`. To add a pack
 
 Make sure you have `nvm`, node `v8.9.0`, and `yarn` installed before proceeding with the following steps. Also, ensure :
 
-1. Clone repo - `remote`
+1. Clone repo - `git clone git@github.com:joshuaalpuerto/oh-my-home.git`
 2. Run `yarn` to install dependencies and clean the git repo.
 3. Run `yarn start` to see the app at `http://localhost:3000`.
 
