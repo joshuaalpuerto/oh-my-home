@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.5.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "oh-my-home",
+  "version": "1.0.0",
+  "description": "Oh my home name generator example",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git@github.com:joshuaalpuerto/oh-my-home.git"
   },
   "engines": {
-    "npm": ">=3",
-    "node": ">=5"
+    "npm": ">=5",
+    "node": ">=8"
   },
-  "author": "Max Stoiber",
+  "author": "Joshua C Alpuerto<joshuacalpuerto@gmail.com",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
