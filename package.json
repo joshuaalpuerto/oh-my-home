@@ -303,9 +303,7 @@
     "ignore": [
       "/internals/scripts",
       "/internals/templates",
-      "/app/utils/firebase-messaging-sw.js",
-      "/app/sw-handler.js",
-      "/cypress"
+      "/app/sw-handler.js"
     ],
     "globals": [
       "Blob",
