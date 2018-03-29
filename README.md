@@ -106,8 +106,40 @@ write head tags can be found [here](https://github.com/nfl/react-helmet#examples
 - [jest](https://facebook.github.io/jest/) - Complete and easy to set-up JavaScript testing solution. Works out of the box for any React project. 
 - [enzyme](https://github.com/airbnb/enzyme) - JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
 
-### CLI
+#### CLI
 - `yarn test` - run all unit test
 - `yarn test:watch` - run all unit tests and watch it interactively.
 - `yarn test:coverage` - run all unit test with coverage.
 
+### Pre-commit
+
+Adding `pre-commit` to your project can be helpful to encourage consistency and quality of your code repository.
+
+- [pre-commit](https://github.com/observing/pre-commit) - **pre-commit** is a pre-commit hook installer for `git`. It will ensure that your `npm test` (or other specified scripts) passes before you can commit your changes. This all conveniently configured in your `package.json`.
+- [lint-staged](https://github.com/okonet/lint-staged) - Linting makes more sense when running before committing your code. By doing that you can ensure no errors are going into repository and enforce code style. But running a lint process on a whole project is slow and linting results can be irrelevant. Ultimately you only want to lint files that will be committed.
+
+## JavaScript Standard Style
+
+### The Rules
+
+- **2 spaces** – for indentation
+- **Single quotes for strings** – except to avoid escaping
+- **No unused variables** – this one catches *tons* of bugs!
+- **No semicolons** – [It's][1] [fine.][2] [Really!][3]
+- **Never start a line with `(`, `[`, or `` ` ``**
+  - This is the **only** gotcha with omitting semicolons – *automatically checked for you!*
+  - [More details][4]
+- **Space after keywords** `if (condition) { ... }`
+- **Space after function name** `function name (arg) { ... }`
+- Always use `===` instead of `==` – but `obj == null` is allowed to check `null || undefined`.
+- Always handle the node.js `err` function parameter
+- Always prefix browser globals with `window` – except `document` and `navigator` are okay
+  - Prevents accidental use of poorly-named browser globals like `open`, `length`,
+    `event`, and `name`.
+- **And [more goodness](https://standardjs.com/)**
+
+## Contributing
+
+Use [GitHub Flow](https://guides.github.com/introduction/flow/) when contributing code to the repository. It is a workflow where deployments are made regulary.
+
+There's only one rule -- anything on `master` branch is always deployable.
