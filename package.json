@@ -297,5 +297,30 @@
     "webpack": "3.5.5",
     "webpack-dev-middleware": "1.11.0",
     "webpack-hot-middleware": "2.18.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "/internals/scripts",
+      "/internals/templates",
+      "/app/utils/firebase-messaging-sw.js",
+      "/app/sw-handler.js",
+      "/cypress"
+    ],
+    "globals": [
+      "Blob",
+      "FormData",
+      "Headers",
+      "Response",
+      "afterEach",
+      "before",
+      "beforeAll",
+      "beforeEach",
+      "describe",
+      "expect",
+      "fetch",
+      "it",
+      "jest"
+    ]
   }
 }
