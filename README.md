@@ -88,7 +88,7 @@ This boilerplate uses [styled-components](https://github.com/styled-components/s
 
 `styled-components` let's us embrace component encapsulation while `sanitize.css` gives us data-driven cross-browser normalization.
 
-See the [CSS documentation](docs/css/README.md) for more information about PostCSS
+See the [PostCSS Documentation](https://github.com/postcss/postcss) for more information about PostCSS
 and CSS modules.
 
 ### JS
@@ -96,9 +96,6 @@ and CSS modules.
 The app bundles all your clients-side scripts and chunk them into several files using
 code splitting where possible. Your code is automatically optimized when
 building for production so you don't have to worry about that.
-
-See the [JS documentation](docs/js/README.md) for more information about the
-JavaScript side of things.
 
 ### SEO
 
