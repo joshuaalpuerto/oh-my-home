@@ -50,7 +50,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 HomePage.propTypes = {
   users: PropTypes.object.isRequired,
   usersLoading: PropTypes.bool.isRequired,
-  getUsers: PropTypes.function.isRequired
+  getUsers: PropTypes.func.isRequired
 }
 
 export function mapDispatchToProps (dispatch) {
