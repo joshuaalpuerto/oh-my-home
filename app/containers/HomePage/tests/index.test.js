@@ -10,7 +10,8 @@ import TableData from 'components/TableData'
 import Button from 'components/Button'
 import { HomePage, mapDispatchToProps } from '../index'
 import {
-  getUsersActions
+  getUsersActions,
+  toggleStatusUserActions
 } from '../actions'
 
 const children = (<h1>Test</h1>)
@@ -24,7 +25,8 @@ describe('<HomePage />', () => {
   const minProps = {
     users: fromJS([]),
     usersLoading: false,
-    getUsers: () => {}
+    getUsers: () => {},
+    toggleStatusUser: () => {}
   }
 
   it('render without exploding', () => {
@@ -62,6 +64,22 @@ describe('<HomePage />', () => {
         const result = mapDispatchToProps(dispatch)
         result.getUsers(payload)
         expect(dispatch).toHaveBeenCalledWith(getUsersActions(payload))
+      })
+    })
+
+    describe('toggleStatusUser', () => {
+      it('should be injected', () => {
+        const dispatch = jest.fn()
+        const result = mapDispatchToProps(dispatch)
+        expect(result.toggleStatusUser).toBeDefined()
+      })
+
+      it('should dispatch toggleStatusUser when called', () => {
+        const payload = { id: 1 }
+        const dispatch = jest.fn()
+        const result = mapDispatchToProps(dispatch)
+        result.toggleStatusUser(payload)
+        expect(dispatch).toHaveBeenCalledWith(toggleStatusUserActions(payload))
       })
     })
   })

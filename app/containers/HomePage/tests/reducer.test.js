@@ -3,8 +3,8 @@ import { fromJS } from 'immutable'
 import homeReducer from '../reducer'
 import {
   getUsersActions,
-  setUsersActions
-  // toggleStatusUserActions
+  setUsersActions,
+  toggleStatusUserActions
 } from '../actions'
 
 describe('homeReducer', () => {
@@ -35,5 +35,18 @@ describe('homeReducer', () => {
       .set('users', fromJS(payload))
 
     expect(homeReducer(state, setUsersActions(payload))).toEqual(expectedResult)
+  })
+
+  it('should set user toggle', () => {
+    const id = 0
+    const payload = { id }
+    const currentState = fromJS({
+      users: [{ name: 'test' }, { name: 'test1' }],
+      usersLoading: false
+    })
+
+    const expectedResult = currentState.setIn(['users', id, 'deleted'], true)
+
+    expect(homeReducer(currentState, toggleStatusUserActions(payload))).toEqual(expectedResult)
   })
 })
