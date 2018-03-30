@@ -62,43 +62,37 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             loading={usersLoading}
             isEmpty={equals(0, users.size)}
             tableHeader={
-              <thead>
-                <tr>
-                  <TableHeaderName>
-                    <FormattedMessage {...messages.tableHeaderName} />
-                  </TableHeaderName>
-                  <TableHeaderStatus>
-                    <FormattedMessage {...messages.tableHeaderStatus} />
-                  </TableHeaderStatus>
-                  <th> <FormattedMessage {...messages.tableHeaderOptions} /> </th>
-                </tr>
-              </thead>
+              <tr>
+                <TableHeaderName>
+                  <FormattedMessage {...messages.tableHeaderName} />
+                </TableHeaderName>
+                <TableHeaderStatus>
+                  <FormattedMessage {...messages.tableHeaderStatus} />
+                </TableHeaderStatus>
+                <th> <FormattedMessage {...messages.tableHeaderOptions} /> </th>
+              </tr>
             }
             tableBody={
-              <tbody>
-                {
-                  users.map((user) => (
-                    <tr key={user.get('id')}>
-                      <td> {`${ucFirst(user.getIn(['name', 'title']))} ${ucFirst(user.getIn(['name', 'last']))}, ${ucFirst(user.getIn(['name', 'first']))}`} </td>
-                      <TDCenter> Active </TDCenter>
-                      <TDCenter>
-                        <ButtonOptionWrapper>
-                          <Button handleRoute={getUsers} >
-                            <FormattedMessage {...messages.viewButton} />
-                          </Button>
-                          <Button handleRoute={getUsers} >
-                            <FormattedMessage {...messages.deleteButton} />
-                          </Button>
-                        </ButtonOptionWrapper>
-                      </TDCenter>
-                    </tr>
-                  ))
-                }
-              </tbody>
+              users.map((user) => (
+                <tr key={user.get('id')}>
+                  <td> {`${ucFirst(user.getIn(['name', 'title']))} ${ucFirst(user.getIn(['name', 'last']))}, ${ucFirst(user.getIn(['name', 'first']))}`} </td>
+                  <TDCenter> Active </TDCenter>
+                  <TDCenter>
+                    <ButtonOptionWrapper>
+                      <Button handleRoute={getUsers} >
+                        <FormattedMessage {...messages.viewButton} />
+                      </Button>
+                      <Button handleRoute={getUsers} >
+                        <FormattedMessage {...messages.deleteButton} />
+                      </Button>
+                    </ButtonOptionWrapper>
+                  </TDCenter>
+                </tr>
+              ))
             }
           />
           <ButtonWrapper>
-            <Button handleRoute={getUsers} >
+            <Button handleRoute={getUsers} disabled={usersLoading}>
               <FormattedMessage {...messages.addUsersButton} />
             </Button>
           </ButtonWrapper>
