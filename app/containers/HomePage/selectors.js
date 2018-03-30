@@ -16,6 +16,7 @@ const selectUsersLoading = () => createSelector(
 )
 
 export {
+  selectHomeDomain,
   selectUsers,
   selectUsersLoading
 }

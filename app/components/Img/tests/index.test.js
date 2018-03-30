@@ -39,6 +39,6 @@ describe('<Img />', () => {
   it('should not adopt a srcset attribute', () => {
     const srcset = 'test-HD.png 2x'
     const renderedComponent = renderComponent({ srcset })
-    expect(renderedComponent.prop('srcset')).toBeUndefined()
+    expect(renderedComponent.prop('srcset')).toBeDefined()
   })
 })

@@ -17,7 +17,9 @@ const wrapper = (props = {}, enzyme = shallow) => enzyme(
 describe('<TableData />', () => {
   const minProps = {
     tableHeader: (<div />),
-    tableBody: (<div />)
+    tableBody: (<div />),
+    isEmpty: false,
+    loading: false
   }
 
   it('render without exploding', () => {

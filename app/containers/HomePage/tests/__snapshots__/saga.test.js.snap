@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getRepos Saga should call the repoLoadingError action if the response errors 1`] = `
+exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 1`] = `
 Object {
-  "@@redux-saga/IO": true,
-  "SELECT": Object {
-    "args": Array [],
-    "selector": [Function],
-  },
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(boilerplate/Home/GET_USERS, fetchUsers)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
 }
 `;
 
-exports[`getRepos Saga should call the repoLoadingError action if the response errors 2`] = `
+exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
     "args": Array [
-      "https://api.github.com/users/mxstbr/repos?type=all&sort=updated",
+      "https://randomuser.me/api/?results=5",
+      Object {
+        "method": "GET",
+      },
     ],
     "context": null,
     "fn": [Function],
@@ -23,25 +27,31 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 1`] = `
+exports[`HomePage Saga fetchUsersSagas fetchUsers should set setUsersAction 1`] = `
 Object {
-  "@@redux-saga/IO": true,
-  "SELECT": Object {
-    "args": Array [],
-    "selector": [Function],
-  },
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(boilerplate/Home/GET_USERS, fetchUsers)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
 }
 `;
 
-exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 2`] = `
+exports[`HomePage Saga fetchUsersSagas fetchUsers should set setUsersAction 2`] = `
 Object {
   "@@redux-saga/IO": true,
-  "CALL": Object {
-    "args": Array [
-      "https://api.github.com/users/mxstbr/repos?type=all&sort=updated",
-    ],
-    "context": null,
-    "fn": [Function],
+  "PUT": Object {
+    "action": Object {
+      "payload": Array [
+        Object {
+          "id": "8c37e2cf-6644-4779-be06-a46bd8ecc9a8",
+          "name": Object {},
+        },
+      ],
+      "type": "boilerplate/Home/SET_USERS",
+    },
+    "channel": null,
   },
 }
 `;

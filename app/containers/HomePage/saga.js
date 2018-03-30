@@ -2,7 +2,6 @@
  * Gets the repositories of the user from Github
  */
 
-import uuidv4 from 'uuid/v4'
 import { takeLatest } from 'redux-saga'
 import { call, put, fork } from 'redux-saga/effects'
 
@@ -23,7 +22,7 @@ export function * fetchUsers (args) {
   const { results } = req
   const users = results.map((result) => ({
     ...result,
-    id: uuidv4()
+    id: `${result.email}`
   }))
   yield put(setUsersActions(users))
 }
