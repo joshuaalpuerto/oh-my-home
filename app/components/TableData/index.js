@@ -13,7 +13,8 @@ import {
   both,
   cond,
   equals,
-  partial
+  partial,
+  ifElse
 } from 'ramda'
 
 import LoadingIndicator from 'components/LoadingIndicator'
@@ -25,38 +26,49 @@ const TableWrapper = styled.table`
   width: 100%
 `
 
+const HeaderWrapper = styled.thead`
+  border-bottom: 1px solid #C8C8C8;
+`
+
 class TableData extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   _displayEmpty = () => {
     return (
-      <tbody>
-        <tr>
-          <td colSpan={999}>
-            <EmptyState message={<FormattedMessage {...messages.emptyState} />} />
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td colSpan={999}>
+          <EmptyState message={<FormattedMessage {...messages.emptyState} />} />
+        </td>
+      </tr>
     )
   }
 
   _displayLoading = () => {
     return (
-      <tbody>
-        <tr>
-          <td colSpan={999}>
-            <LoadingIndicator />
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td colSpan={999}>
+          <LoadingIndicator />
+        </td>
+      </tr>
     )
   }
 
   _displayBody = () => {
     const { tableBody, isEmpty, loading } = this.props
     const display = cond([
-      [equals(true), this._displayLoading],
+      [both(equals(true), partial(equals(true), [isEmpty])), this._displayLoading],
       [both(equals(false), partial(equals(true), [isEmpty])), this._displayEmpty],
-      [both(equals(false), partial(equals(false), [isEmpty])), () => tableBody]
+      [partial(equals(false), [isEmpty]), () => tableBody]
     ])
+    return display(loading)
+  }
+
+  _displayEndLoading = () => {
+    const { loading, isEmpty } = this.props
+    const display = ifElse(
+      both(equals(true), partial(equals(false), [isEmpty])),
+      this._displayLoading,
+      () => null
+    )
+
     return display(loading)
   }
 
@@ -64,8 +76,13 @@ class TableData extends React.PureComponent { // eslint-disable-line react/prefe
     const { tableHeader } = this.props
     return (
       <TableWrapper>
-        { tableHeader }
-        { this._displayBody() }
+        <HeaderWrapper>
+          { tableHeader }
+        </HeaderWrapper>
+        <tbody>
+          { this._displayBody() }
+          { this._displayEndLoading() }
+        </tbody>
       </TableWrapper>
     )
   }
