@@ -7,7 +7,6 @@ import messages from '../messages'
 import Footer from '../index'
 
 describe('<Footer />', () => {
-
   it('should render the credits', () => {
     const renderedComponent = shallow(<Footer />)
     expect(renderedComponent.contains(
