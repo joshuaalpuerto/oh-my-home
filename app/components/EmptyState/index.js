@@ -29,7 +29,10 @@ function EmptyState ({ message }) {
 
 // We require the use of src and alt, only enforced by react in dev mode
 EmptyState.propTypes = {
-  message: PropTypes.string.isRequired
+  message: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]).isRequired
 }
 
 export default EmptyState
