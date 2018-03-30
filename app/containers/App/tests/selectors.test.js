@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable'
 
 import {
-  selectGlobal,
+  selectGlobal
 } from '../selectors'
 
 describe('selectGlobal', () => {

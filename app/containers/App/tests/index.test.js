@@ -6,7 +6,6 @@ import Footer from 'components/Footer'
 import App from '../index'
 
 describe('<App />', () => {
-
   it('should render some routes', () => {
     const renderedComponent = shallow(
       <App />
