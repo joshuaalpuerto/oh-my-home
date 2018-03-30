@@ -3,7 +3,6 @@
  */
 
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
@@ -36,26 +35,13 @@ import {
   selectUsersLoading
 } from './selectors'
 
-const TableHeaderName = styled.th`
-  width: 50%;
-  text-align: left;
-`
-
-const TableHeaderStatus = styled.th`
-  width: 20%;
-`
-
-const TDCenter = styled.td`
-  text-align: center;
-`
-const ButtonWrapper = styled.div`
-  text-align: right;
-`
-
-const ButtonOptionWrapper = styled.div`
-  display: flex;
-  justify-content: center
-`
+import {
+  TableHeaderName,
+  TableHeaderStatus,
+  TDCenter,
+  ButtonWrapper,
+  ButtonOptionWrapper
+} from './styled'
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
