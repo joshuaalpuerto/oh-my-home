@@ -53,8 +53,8 @@ class TableData extends React.PureComponent { // eslint-disable-line react/prefe
   _displayBody = () => {
     const { tableBody, isEmpty, loading } = this.props
     const display = cond([
+      [equals(true), this._displayLoading],
       [both(equals(false), partial(equals(true), [isEmpty])), this._displayEmpty],
-      [both(equals(true), partial(equals(true), [isEmpty])), this._displayLoading],
       [both(equals(false), partial(equals(false), [isEmpty])), () => tableBody]
     ])
     return display(loading)
