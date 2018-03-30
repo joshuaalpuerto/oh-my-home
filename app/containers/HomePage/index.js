@@ -28,7 +28,8 @@ import reducer from './reducer'
 import saga from './saga'
 
 import {
-  getUsersActions
+  getUsersActions,
+  toggleStatusUserActions
 } from './actions'
 import {
   selectUsers,
@@ -45,7 +46,7 @@ import {
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
-    const { users, usersLoading, getUsers } = this.props
+    const { users, usersLoading, getUsers, toggleStatusUser } = this.props
     return (
       <article>
         <Helmet>
@@ -73,17 +74,25 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
               </tr>
             }
             tableBody={
-              users.map((user) => (
+              users.map((user, userIdx) => (
                 <tr key={user.get('id')}>
                   <td> {`${ucFirst(user.getIn(['name', 'title']))} ${ucFirst(user.getIn(['name', 'last']))}, ${ucFirst(user.getIn(['name', 'first']))}`} </td>
-                  <TDCenter> Active </TDCenter>
+                  <TDCenter> {
+                    user.get('deleted')
+                      ? <FormattedMessage {...messages.infoInActive} />
+                    : <FormattedMessage {...messages.infoActive} />
+                  } </TDCenter>
                   <TDCenter>
                     <ButtonOptionWrapper>
                       <Button handleRoute={getUsers} >
                         <FormattedMessage {...messages.viewButton} />
                       </Button>
-                      <Button handleRoute={getUsers} >
-                        <FormattedMessage {...messages.deleteButton} />
+                      <Button handleRoute={() => toggleStatusUser({ id: userIdx })} >
+                        {
+                        user.get('deleted')
+                          ? <FormattedMessage {...messages.redoButton} />
+                        : <FormattedMessage {...messages.deleteButton} />
+                      }
                       </Button>
                     </ButtonOptionWrapper>
                   </TDCenter>
@@ -105,12 +114,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 HomePage.propTypes = {
   users: PropTypes.object.isRequired,
   usersLoading: PropTypes.bool.isRequired,
-  getUsers: PropTypes.func.isRequired
+  getUsers: PropTypes.func.isRequired,
+  toggleStatusUser: PropTypes.func.isRequired
 }
 
 export function mapDispatchToProps (dispatch) {
   return {
     getUsers: (payload) => dispatch(getUsersActions(payload)),
+    toggleStatusUser: (payload) => dispatch(toggleStatusUserActions(payload)),
     dispatch
   }
 }

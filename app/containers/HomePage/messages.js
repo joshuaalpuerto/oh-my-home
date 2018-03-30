@@ -22,6 +22,14 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.tableHeaderOptions',
     defaultMessage: 'Options'
   },
+  infoActive: {
+    id: 'boilerplate.containers.HomePage.infoActive',
+    defaultMessage: 'Active'
+  },
+  infoInActive: {
+    id: 'boilerplate.containers.HomePage.infoInActive',
+    defaultMessage: 'In-Active'
+  },
   addUsersButton: {
     id: 'boilerplate.containers.HomePage.addUsersButton',
     defaultMessage: 'Add Users'

@@ -5,7 +5,8 @@ import { fromJS } from 'immutable'
 
 import {
   GET_USERS,
-  SET_USERS
+  SET_USERS,
+  TOGGLE_STATUS_USER
 } from './constants'
 
 // The initial state of the App
@@ -27,6 +28,17 @@ function homeReducer (state = initialState, action) {
       return state
         .set('usersLoading', false)
         .set('users', concatState)
+    }
+
+    case TOGGLE_STATUS_USER: {
+      const { id } = action.payload
+      // needs to concat items
+      const users = state.get('users')
+      const user = users.get(id)
+      const updatedState = users.setIn([id, 'deleted'], !user.get('deleted'))
+
+      return state
+        .set('users', updatedState)
     }
     default:
       return state
