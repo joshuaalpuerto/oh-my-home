@@ -37,21 +37,3 @@ Object {
   Symbol(Symbol.iterator): [Function],
 }
 `;
-
-exports[`HomePage Saga fetchUsersSagas fetchUsers should set setUsersAction 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "PUT": Object {
-    "action": Object {
-      "payload": Array [
-        Object {
-          "id": "8c37e2cf-6644-4779-be06-a46bd8ecc9a8",
-          "name": Object {},
-        },
-      ],
-      "type": "boilerplate/Home/SET_USERS",
-    },
-    "channel": null,
-  },
-}
-`;
