@@ -2,6 +2,7 @@
  * Gets the repositories of the user from Github
  */
 
+import uuidv4 from 'uuid/v4'
 import { takeLatest } from 'redux-saga'
 import { call, put, fork } from 'redux-saga/effects'
 
@@ -16,11 +17,15 @@ import request from 'utils/request'
 
 export function * fetchUsers (args) {
   // const { payload } = args
-  const req = yield call(request, `/`, {
+  const req = yield call(request, `https://randomuser.me/api/?results=5`, {
     method: 'GET'
   })
-
-  yield put(setUsersActions(req))
+  const { results } = req
+  const users = results.map((result) => ({
+    ...result,
+    id: uuidv4()
+  }))
+  yield put(setUsersActions(users))
 }
 
 export function * fetchUsersSagas () {
