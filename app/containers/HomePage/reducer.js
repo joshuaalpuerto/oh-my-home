@@ -20,11 +20,14 @@ function homeReducer (state = initialState, action) {
       return state
         .set('usersLoading', true)
 
-    case SET_USERS:
+    case SET_USERS: {
+      // needs to concat items
+      const concatState = state.get('users').concat(fromJS(action.payload))
+
       return state
         .set('usersLoading', false)
-        .set('users', fromJS(action.payload))
-
+        .set('users', concatState)
+    }
     default:
       return state
   }
