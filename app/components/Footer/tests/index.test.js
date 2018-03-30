@@ -7,17 +7,6 @@ import messages from '../messages'
 import Footer from '../index'
 
 describe('<Footer />', () => {
-  it('should render the copyright notice', () => {
-    const renderedComponent = shallow(
-      <Footer />
-    )
-    expect(renderedComponent.contains(
-      <section>
-        <FormattedMessage {...messages.licenseMessage} />
-      </section>
-    )).toBe(true)
-  })
-
   it('should render the credits', () => {
     const renderedComponent = shallow(<Footer />)
     expect(renderedComponent.contains(
@@ -25,7 +14,7 @@ describe('<Footer />', () => {
         <FormattedMessage
           {...messages.authorMessage}
           values={{
-            author: <A href='https://twitter.com/mxstbr'>Max Stoiber</A>
+            author: <A href='https://github.com/joshuaalpuerto'>Joshua C Alpuerto</A>
           }}
         />
       </section>

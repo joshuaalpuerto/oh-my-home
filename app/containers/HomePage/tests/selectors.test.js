@@ -1,31 +1,46 @@
 import { fromJS } from 'immutable'
 
 import {
-  selectHome,
-  makeSelectUsername
+  selectHomeDomain,
+  selectUsers,
+  selectUsersLoading
 } from '../selectors'
 
-describe('selectHome', () => {
+describe('selectHomeDomain', () => {
   it('should select the home state', () => {
     const homeState = fromJS({
-      userData: {}
+      users: [],
+      usersLoading: false
     })
     const mockedState = fromJS({
       home: homeState
     })
-    expect(selectHome(mockedState)).toEqual(homeState)
+    expect(selectHomeDomain(mockedState)).toEqual(homeState)
   })
 })
 
-describe('makeSelectUsername', () => {
-  const usernameSelector = makeSelectUsername()
-  it('should select the username', () => {
-    const username = 'mxstbr'
+describe('selectUsers', () => {
+  const selectors = selectUsers()
+  it('should select the users', () => {
+    const users = fromJS([{ user: 1 }])
     const mockedState = fromJS({
       home: {
-        username
+        users
       }
     })
-    expect(usernameSelector(mockedState)).toEqual(username)
+    expect(selectors(mockedState)).toEqual(users)
+  })
+})
+
+describe('selectUsersLoading', () => {
+  const selectors = selectUsersLoading()
+  it('should select the usersLoading', () => {
+    const usersLoading = false
+    const mockedState = fromJS({
+      home: {
+        usersLoading
+      }
+    })
+    expect(selectors(mockedState)).toEqual(usersLoading)
   })
 })

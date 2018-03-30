@@ -1,7 +1,5 @@
 /*
  * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
  */
 
 import React from 'react'
@@ -11,78 +9,102 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
+import {
+  equals
+} from 'ramda'
 
 import injectReducer from 'utils/injectReducer'
 import injectSaga from 'utils/injectSaga'
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors'
+
+import { ucFirst } from 'utils/strings'
+
 import H2 from 'components/H2'
-import ReposList from 'components/ReposList'
-import AtPrefix from './AtPrefix'
-import CenteredSection from './CenteredSection'
-import Form from './Form'
-import Input from './Input'
+import TableData from 'components/TableData'
+import Button from 'components/Button'
+
 import Section from './Section'
 import messages from './messages'
-import { loadRepos } from '../App/actions'
-import { changeUsername } from './actions'
-import { makeSelectUsername } from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 
+import {
+  getUsersActions,
+  toggleStatusUserActions
+} from './actions'
+import {
+  selectUsers,
+  selectUsersLoading
+} from './selectors'
+
+import {
+  TableHeaderName,
+  TableHeaderStatus,
+  TDCenter,
+  ButtonWrapper,
+  ButtonOptionWrapper
+} from './styled'
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
-  componentDidMount () {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm()
-    }
-  }
-
   render () {
-    const { loading, error, repos } = this.props
-    const reposListProps = {
-      loading,
-      error,
-      repos
-    }
-
+    const { users, usersLoading, getUsers, toggleStatusUser } = this.props
     return (
       <article>
         <Helmet>
-          <title>Home Page</title>
-          <meta name='description' content='A React.js Boilerplate application homepage' />
+          <title>Users</title>
+          <meta name='description' content="A Oh My Home application user\'s lists" />
         </Helmet>
         <div>
-          <CenteredSection>
-            <H2>
-              <FormattedMessage {...messages.startProjectHeader} />
-            </H2>
-            <p>
-              <FormattedMessage {...messages.startProjectMessage} />
-            </p>
-          </CenteredSection>
           <Section>
             <H2>
-              <FormattedMessage {...messages.trymeHeader} />
+              <FormattedMessage {...messages.pageTitle} />
             </H2>
-            <Form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor='username'>
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
-                  id='username'
-                  type='text'
-                  placeholder='mxstbr'
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </Form>
-            <ReposList {...reposListProps} />
           </Section>
+          <TableData
+            loading={usersLoading}
+            isEmpty={equals(0, users.size)}
+            tableHeader={
+              <tr>
+                <TableHeaderName>
+                  <FormattedMessage {...messages.tableHeaderName} />
+                </TableHeaderName>
+                <TableHeaderStatus>
+                  <FormattedMessage {...messages.tableHeaderStatus} />
+                </TableHeaderStatus>
+                <th> <FormattedMessage {...messages.tableHeaderOptions} /> </th>
+              </tr>
+            }
+            tableBody={
+              users.map((user, userIdx) => (
+                <tr key={user.get('id')}>
+                  <td> {`${ucFirst(user.getIn(['name', 'title']))} ${ucFirst(user.getIn(['name', 'last']))}, ${ucFirst(user.getIn(['name', 'first']))}`} </td>
+                  <TDCenter> {
+                    user.get('deleted')
+                      ? <FormattedMessage {...messages.infoInActive} />
+                    : <FormattedMessage {...messages.infoActive} />
+                  } </TDCenter>
+                  <TDCenter>
+                    <ButtonOptionWrapper>
+                      <Button handleRoute={getUsers} >
+                        <FormattedMessage {...messages.viewButton} />
+                      </Button>
+                      <Button handleRoute={() => toggleStatusUser({ id: userIdx })} >
+                        {
+                        user.get('deleted')
+                          ? <FormattedMessage {...messages.redoButton} />
+                        : <FormattedMessage {...messages.deleteButton} />
+                      }
+                      </Button>
+                    </ButtonOptionWrapper>
+                  </TDCenter>
+                </tr>
+              ))
+            }
+          />
+          <ButtonWrapper>
+            <Button handleRoute={getUsers} disabled={usersLoading}>
+              <FormattedMessage {...messages.addUsersButton} />
+            </Button>
+          </ButtonWrapper>
         </div>
       </article>
     )
@@ -90,35 +112,23 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool
-  ]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  users: PropTypes.object.isRequired,
+  usersLoading: PropTypes.bool.isRequired,
+  getUsers: PropTypes.func.isRequired,
+  toggleStatusUser: PropTypes.func.isRequired
 }
 
 export function mapDispatchToProps (dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault()
-      dispatch(loadRepos())
-    }
+    getUsers: (payload) => dispatch(getUsersActions(payload)),
+    toggleStatusUser: (payload) => dispatch(toggleStatusUserActions(payload)),
+    dispatch
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError()
+  users: selectUsers(),
+  usersLoading: selectUsersLoading()
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

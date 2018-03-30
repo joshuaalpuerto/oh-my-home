@@ -6,24 +6,44 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  startProjectHeader: {
-    id: 'boilerplate.containers.HomePage.start_project.header',
-    defaultMessage: 'Start your next react project in seconds'
+  pageTitle: {
+    id: 'boilerplate.containers.HomePage.pageTitle',
+    defaultMessage: 'Users List'
   },
-  startProjectMessage: {
-    id: 'boilerplate.containers.HomePage.start_project.message',
-    defaultMessage: 'A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices'
+  tableHeaderName: {
+    id: 'boilerplate.containers.HomePage.tableHeaderName',
+    defaultMessage: 'Name'
   },
-  trymeHeader: {
-    id: 'boilerplate.containers.HomePage.tryme.header',
-    defaultMessage: 'Try me!'
+  tableHeaderStatus: {
+    id: 'boilerplate.containers.HomePage.tableHeaderStatus',
+    defaultMessage: 'Status'
   },
-  trymeMessage: {
-    id: 'boilerplate.containers.HomePage.tryme.message',
-    defaultMessage: 'Show Github repositories by'
+  tableHeaderOptions: {
+    id: 'boilerplate.containers.HomePage.tableHeaderOptions',
+    defaultMessage: 'Options'
   },
-  trymeAtPrefix: {
-    id: 'boilerplate.containers.HomePage.tryme.atPrefix',
-    defaultMessage: '@'
+  infoActive: {
+    id: 'boilerplate.containers.HomePage.infoActive',
+    defaultMessage: 'Active'
+  },
+  infoInActive: {
+    id: 'boilerplate.containers.HomePage.infoInActive',
+    defaultMessage: 'In-Active'
+  },
+  addUsersButton: {
+    id: 'boilerplate.containers.HomePage.addUsersButton',
+    defaultMessage: 'Add Users'
+  },
+  viewButton: {
+    id: 'boilerplate.containers.HomePage.viewButton',
+    defaultMessage: 'View'
+  },
+  deleteButton: {
+    id: 'boilerplate.containers.HomePage.deleteButton',
+    defaultMessage: 'Delete'
+  },
+  redoButton: {
+    id: 'boilerplate.containers.HomePage.redoButton',
+    defaultMessage: 'Redo'
   }
 })

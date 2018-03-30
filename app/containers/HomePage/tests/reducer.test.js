@@ -2,14 +2,17 @@ import { fromJS } from 'immutable'
 
 import homeReducer from '../reducer'
 import {
-  changeUsername
+  getUsersActions,
+  setUsersActions,
+  toggleStatusUserActions
 } from '../actions'
 
 describe('homeReducer', () => {
   let state
   beforeEach(() => {
     state = fromJS({
-      username: ''
+      users: [],
+      usersLoading: false
     })
   })
 
@@ -18,10 +21,32 @@ describe('homeReducer', () => {
     expect(homeReducer(undefined, {})).toEqual(expectedResult)
   })
 
-  it('should handle the changeUsername action correctly', () => {
-    const fixture = 'mxstbr'
-    const expectedResult = state.set('username', fixture)
+  it('should set usersLoading on getUser', () => {
+    const expectedResult = state
+      .set('usersLoading', true)
 
-    expect(homeReducer(state, changeUsername(fixture))).toEqual(expectedResult)
+    expect(homeReducer(state, getUsersActions())).toEqual(expectedResult)
+  })
+
+  it('should set uses on setUser', () => {
+    const payload = [{ user: 1 }]
+    const expectedResult = state
+      .set('usersLoading', false)
+      .set('users', fromJS(payload))
+
+    expect(homeReducer(state, setUsersActions(payload))).toEqual(expectedResult)
+  })
+
+  it('should set user toggle', () => {
+    const id = 0
+    const payload = { id }
+    const currentState = fromJS({
+      users: [{ name: 'test' }, { name: 'test1' }],
+      usersLoading: false
+    })
+
+    const expectedResult = currentState.setIn(['users', id, 'deleted'], true)
+
+    expect(homeReducer(currentState, toggleStatusUserActions(payload))).toEqual(expectedResult)
   })
 })
