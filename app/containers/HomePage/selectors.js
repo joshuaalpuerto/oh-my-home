@@ -4,14 +4,18 @@
 
 import { createSelector } from 'reselect'
 
-const selectHome = (state) => state.get('home')
+const selectHomeDomain = (state) => state.get('home')
 
-const makeSelectUsername = () => createSelector(
-  selectHome,
-  (homeState) => homeState.get('username')
+const selectUsers = () => createSelector(
+  selectHomeDomain,
+  (substate) => substate.get('users')
+)
+const selectUsersLoading = () => createSelector(
+  selectHomeDomain,
+  (substate) => substate.get('usersLoading')
 )
 
 export {
-  selectHome,
-  makeSelectUsername
+  selectUsers,
+  selectUsersLoading
 }

@@ -1,7 +1,5 @@
 /*
  * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
  */
 
 import React from 'react'
@@ -14,26 +12,22 @@ import { createStructuredSelector } from 'reselect'
 
 import injectReducer from 'utils/injectReducer'
 import injectSaga from 'utils/injectSaga'
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors'
+
 import H2 from 'components/H2'
 import Section from './Section'
 import messages from './messages'
-import { loadRepos } from '../App/actions'
-import { changeUsername } from './actions'
-import { makeSelectUsername } from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 
-export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
-  componentDidMount () {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm()
-    }
-  }
+import {
+  getUsersActions
+} from './actions'
+import {
+  selectUsers,
+  selectUsersLoading
+} from './selectors'
 
+export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
     return (
       <article>
@@ -54,35 +48,21 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool
-  ]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  users: PropTypes.object.isRequired,
+  usersLoading: PropTypes.bool.isRequired,
+  getUsers: PropTypes.function.isRequired
 }
 
 export function mapDispatchToProps (dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault()
-      dispatch(loadRepos())
-    }
+    getUsers: (payload) => dispatch(getUsersActions(payload)),
+    dispatch
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError()
+  users: selectUsers(),
+  usersLoading: selectUsersLoading()
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
