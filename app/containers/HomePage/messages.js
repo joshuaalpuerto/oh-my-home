@@ -14,8 +14,28 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.tableHeaderName',
     defaultMessage: 'Name'
   },
+  tableHeaderStatus: {
+    id: 'boilerplate.containers.HomePage.tableHeaderStatus',
+    defaultMessage: 'Status'
+  },
   tableHeaderOptions: {
     id: 'boilerplate.containers.HomePage.tableHeaderOptions',
     defaultMessage: 'Options'
+  },
+  addUsersButton: {
+    id: 'boilerplate.containers.HomePage.addUsersButton',
+    defaultMessage: 'Add Users'
+  },
+  viewButton: {
+    id: 'boilerplate.containers.HomePage.viewButton',
+    defaultMessage: 'View'
+  },
+  deleteButton: {
+    id: 'boilerplate.containers.HomePage.deleteButton',
+    defaultMessage: 'Delete'
+  },
+  redoButton: {
+    id: 'boilerplate.containers.HomePage.redoButton',
+    defaultMessage: 'Redo'
   }
 })

@@ -17,8 +17,12 @@ import {
 import injectReducer from 'utils/injectReducer'
 import injectSaga from 'utils/injectSaga'
 
+import { ucFirst } from 'utils/strings'
+
 import H2 from 'components/H2'
 import TableData from 'components/TableData'
+import Button from 'components/Button'
+
 import Section from './Section'
 import messages from './messages'
 import reducer from './reducer'
@@ -33,12 +37,29 @@ import {
 } from './selectors'
 
 const TableHeaderName = styled.th`
-  width: 80%;
+  width: 50%;
   text-align: left;
 `
+
+const TableHeaderStatus = styled.th`
+  width: 20%;
+`
+
+const TDCenter = styled.td`
+  text-align: center;
+`
+const ButtonWrapper = styled.div`
+  text-align: right;
+`
+
+const ButtonOptionWrapper = styled.div`
+  display: flex;
+  justify-content: center
+`
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
-    const { users, usersLoading } = this.props
+    const { users, usersLoading, getUsers } = this.props
     return (
       <article>
         <Helmet>
@@ -57,7 +78,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             tableHeader={
               <thead>
                 <tr>
-                  <TableHeaderName> <FormattedMessage {...messages.tableHeaderName} /> </TableHeaderName>
+                  <TableHeaderName>
+                    <FormattedMessage {...messages.tableHeaderName} />
+                  </TableHeaderName>
+                  <TableHeaderStatus>
+                    <FormattedMessage {...messages.tableHeaderStatus} />
+                  </TableHeaderStatus>
                   <th> <FormattedMessage {...messages.tableHeaderOptions} /> </th>
                 </tr>
               </thead>
@@ -67,14 +93,29 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 {
                   users.map((user) => (
                     <tr key={user.get('id')}>
-                      <td> test </td>
-                      <td> test </td>
+                      <td> {`${ucFirst(user.getIn(['name', 'title']))} ${ucFirst(user.getIn(['name', 'last']))}, ${ucFirst(user.getIn(['name', 'first']))}`} </td>
+                      <TDCenter> Active </TDCenter>
+                      <TDCenter>
+                        <ButtonOptionWrapper>
+                          <Button handleRoute={getUsers} >
+                            <FormattedMessage {...messages.viewButton} />
+                          </Button>
+                          <Button handleRoute={getUsers} >
+                            <FormattedMessage {...messages.deleteButton} />
+                          </Button>
+                        </ButtonOptionWrapper>
+                      </TDCenter>
                     </tr>
                   ))
                 }
               </tbody>
             }
           />
+          <ButtonWrapper>
+            <Button handleRoute={getUsers} >
+              <FormattedMessage {...messages.addUsersButton} />
+            </Button>
+          </ButtonWrapper>
         </div>
       </article>
     )
