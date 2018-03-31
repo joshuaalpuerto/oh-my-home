@@ -73,6 +73,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }
   }
 
+  _handleFilter = (evt) => {
+    // We cannot use the target since its synthetic event issue.
+    const filter = evt.target && evt.target.value || 'all'
+    this.setState(() => ({
+      filter: filter
+    }))
+  }
+
   render () {
     const { users, usersLoading, getUsers, toggleStatusUser } = this.props
     const { filter, modal, selectedUser } = this.state
@@ -94,7 +102,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
               value={filter}
               values={FILTERS}
               messages={messages}
-              onToggle={() => {}}
+              onToggle={this._handleFilter}
               />
           </FilterWrapper>
           <TableData
