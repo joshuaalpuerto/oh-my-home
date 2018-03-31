@@ -3,6 +3,8 @@ import { fromJS } from 'immutable'
 import {
   selectHomeDomain,
   selectUsers,
+  selectUsersActive,
+  selectUsersInActive,
   selectUsersLoading
 } from '../selectors'
 
@@ -29,6 +31,34 @@ describe('selectUsers', () => {
       }
     })
     expect(selectors(mockedState)).toEqual(users)
+  })
+})
+
+describe('selectUsersActive', () => {
+  const selector = selectUsersActive()
+
+  it('should select users Active', () => {
+    const users = fromJS([])
+    const mockedState = fromJS({
+      home: {
+        users
+      }
+    })
+    expect(selector(mockedState)).toEqual(users)
+  })
+})
+
+describe('selectUsersInActive', () => {
+  const selector = selectUsersInActive()
+
+  it('should select users InActive', () => {
+    const users = fromJS([ { deleted: true } ])
+    const mockedState = fromJS({
+      home: {
+        users
+      }
+    })
+    expect(selector(mockedState)).toEqual(users)
   })
 })
 

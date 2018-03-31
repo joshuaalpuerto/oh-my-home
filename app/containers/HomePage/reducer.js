@@ -34,8 +34,9 @@ function homeReducer (state = initialState, action) {
       const { id } = action.payload
       // needs to concat items
       const users = state.get('users')
-      const user = users.get(id)
-      const updatedState = users.setIn([id, 'deleted'], !user.get('deleted'))
+      const findIndex = users.findIndex(user => user.get('id') === id)
+      const user = users.get(findIndex)
+      const updatedState = users.setIn([findIndex, 'deleted'], !user.get('deleted'))
 
       return state
         .set('users', updatedState)
