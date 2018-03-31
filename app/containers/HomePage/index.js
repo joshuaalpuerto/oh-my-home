@@ -144,7 +144,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                       <Button handleRoute={this._handleModal(true, user)} >
                         <FormattedMessage {...messages.viewButton} />
                       </Button>
-                      <Button handleRoute={() => toggleStatusUser({ id: userIdx })} >
+                      <Button handleRoute={() => toggleStatusUser({ id: user.get('id') })} >
                         {
                         user.get('deleted')
                           ? <FormattedMessage {...messages.redoButton} />
