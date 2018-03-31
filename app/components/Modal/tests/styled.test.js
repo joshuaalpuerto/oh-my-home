@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import {
   ModalContainer,
@@ -26,6 +26,20 @@ describe('<Modal /> Styled', () => {
       expect(
         renderComponent.length
       ).toEqual(1)
+    })
+
+    it('should open true', () => {
+      const renderComponent = wrapper(ModalContainer, { open: true }, mount)
+      expect(
+        renderComponent.props().open
+      ).toEqual(true)
+    })
+
+    it('should open false', () => {
+      const renderComponent = wrapper(ModalContainer, { open: false }, mount)
+      expect(
+        renderComponent.props().open
+      ).toEqual(false)
     })
   })
 
