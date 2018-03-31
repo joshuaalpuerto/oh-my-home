@@ -27,7 +27,7 @@
 
   "boilerplate.components.TableData.emptyState": "没有用户",
 
-
+  "boilerplate.components.Footer.footerLocale": "语言 :",
   "boilerplate.components.Footer.author.message": "用爱来制造 {author}.",
   "boilerplate.containers.LocaleToggle.de": "de",
   "boilerplate.containers.LocaleToggle.en": "en",
