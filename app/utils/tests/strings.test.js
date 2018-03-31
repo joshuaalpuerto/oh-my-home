@@ -5,4 +5,8 @@ describe('Strings Tests', () => {
     const str = 'test'
     expect(ucFirst(str)).toEqual('Test')
   })
+
+  it('should return empty', () => {
+    expect(ucFirst()).toEqual('')
+  })
 })
