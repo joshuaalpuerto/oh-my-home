@@ -6,8 +6,8 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  header: {
-    id: 'app.components.Modal.header',
-    defaultMessage: 'This is the Modal component !'
+  closeButton: {
+    id: 'app.components.Modal.closeButton',
+    defaultMessage: 'Close'
   }
 })
