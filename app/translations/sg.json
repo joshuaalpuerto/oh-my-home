@@ -1,0 +1,31 @@
+{
+  "boilerplate.containers.HomePage.pageTitle": "用户列表",
+  "boilerplate.containers.HomePage.tableHeaderName": "名称",
+  "boilerplate.containers.HomePage.tableHeaderStatus": "状态",
+  "boilerplate.containers.HomePage.tableHeaderOptions": "选项",
+  "boilerplate.containers.HomePage.infoActive": "活性",
+  "boilerplate.containers.HomePage.infoInActive": "在主动",
+  "boilerplate.containers.HomePage.detailHeader": "用户详情",
+  "boilerplate.containers.HomePage.detailAddressHeader": "地址",
+  "boilerplate.containers.HomePage.detailName": "名称: ",
+  "boilerplate.containers.HomePage.detailEmail": "电子邮件: ",
+  "boilerplate.containers.HomePage.detailContact": "联系: ",
+  "boilerplate.containers.HomePage.detailAddressStreet": "街: ",
+  "boilerplate.containers.HomePage.detailAddressCity": "市: ",
+  "boilerplate.containers.HomePage.detailAddressState": "州: ",
+  "boilerplate.containers.HomePage.detailAddressPostcode": "邮编: ",
+  "boilerplate.containers.HomePage.addUsersButton": "添加用户",
+  "boilerplate.containers.HomePage.viewButton": "视图",
+  "boilerplate.containers.HomePage.deleteButton": "删除",
+  "boilerplate.containers.HomePage.redoButton": "重做",
+
+  "app.components.Modal.closeButton": "关",
+
+  "boilerplate.components.TableData.emptyState": "没有用户",
+
+
+  "boilerplate.components.Footer.author.message": "用爱来制造 {author}.",
+  "boilerplate.containers.LocaleToggle.de": "de",
+  "boilerplate.containers.LocaleToggle.en": "en",
+  "boilerplate.containers.NotFoundPage.header": "找不到网页."
+}
