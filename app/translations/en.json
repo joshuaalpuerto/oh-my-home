@@ -1,5 +1,9 @@
 {
   "boilerplate.containers.HomePage.pageTitle": "Users List",
+  "boilerplate.containers.HomePage.pageFilter": "Filter: ",
+  "boilerplate.containers.HomePage.all": "All",
+  "boilerplate.containers.HomePage.active": "Active",
+  "boilerplate.containers.HomePage.inActive": "In-Active",
   "boilerplate.containers.HomePage.tableHeaderName": "Name",
   "boilerplate.containers.HomePage.tableHeaderStatus": "Status",
   "boilerplate.containers.HomePage.tableHeaderOptions": "Options",

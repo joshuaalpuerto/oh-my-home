@@ -1,5 +1,9 @@
 {
   "boilerplate.containers.HomePage.pageTitle": "用户列表",
+  "boilerplate.containers.HomePage.pageFilter": "过滤: ",
+  "boilerplate.containers.HomePage.all": "所有",
+  "boilerplate.containers.HomePage.active": "活性",
+  "boilerplate.containers.HomePage.inActive": "在主动",
   "boilerplate.containers.HomePage.tableHeaderName": "名称",
   "boilerplate.containers.HomePage.tableHeaderStatus": "状态",
   "boilerplate.containers.HomePage.tableHeaderOptions": "选项",
