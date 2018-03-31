@@ -24,6 +24,8 @@ const wrapper = (props = {}, enzyme = shallow) => enzyme(
 describe('<HomePage />', () => {
   const minProps = {
     users: fromJS([]),
+    usersActive: fromJS([]),
+    usersInActive: fromJS([]),
     usersLoading: false,
     getUsers: () => {},
     toggleStatusUser: () => {}
@@ -53,6 +55,14 @@ describe('<HomePage />', () => {
     expect(
       component._getFullName(props.users)
     ).toEqual('Mr Dev, Test')
+  })
+
+  it('should return correct data', () => {
+    const renderComponent = wrapper(minProps)
+    const component = renderComponent.instance()
+    expect(
+      component._dataHandler()
+    ).toEqual(minProps.users)
   })
 
   it('should return updated state', () => {

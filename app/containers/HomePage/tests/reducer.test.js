@@ -38,14 +38,16 @@ describe('homeReducer', () => {
   })
 
   it('should set user toggle', () => {
-    const id = 0
+    const id = 'test'
     const payload = { id }
     const currentState = fromJS({
-      users: [{ name: 'test' }, { name: 'test1' }],
+      users: [{ id: 'test', name: 'test' }, { id: 'test1', name: 'test1' }],
       usersLoading: false
     })
 
-    const expectedResult = currentState.setIn(['users', id, 'deleted'], true)
+    const findIndex = currentState.get('users').findIndex(user => user.get('id') === id)
+
+    const expectedResult = currentState.setIn(['users', findIndex, 'deleted'], true)
 
     expect(homeReducer(currentState, toggleStatusUserActions(payload))).toEqual(expectedResult)
   })
