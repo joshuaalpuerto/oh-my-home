@@ -6,7 +6,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 import { FormattedMessage } from 'react-intl'
 
@@ -14,9 +14,9 @@ import Button from 'components/Button'
 
 import messages from './messages'
 
-const ModalContainer= styled.div`
+const ModalContainer = styled.div`
   background:rgba(0,0,0,.8);
-  display: ${(({ open })=>  open ? 'flex' : 'none')};
+  display: ${(({ open }) => open ? 'flex' : 'none')};
   height:100%;
   justify-content: center;
   left:0;
@@ -25,7 +25,7 @@ const ModalContainer= styled.div`
   width:100%;
   z-index:1;
 `
-const ModalWrapper= styled.div`
+const ModalWrapper = styled.div`
   background-color: #FFF;
   height: auto;
   margin: auto;
@@ -49,13 +49,12 @@ const ModalFooter = styled.div`
 `
 
 class Modal extends React.Component {
-
   static propTypes = {
     open: PropTypes.bool.isRequired,
     handleToggle: PropTypes.func.isRequired
   }
 
-  render() {
+  render () {
     const { children, open, handleToggle } = this.props
     return (
       <ModalContainer open={open}>
@@ -70,7 +69,7 @@ class Modal extends React.Component {
           </ModalFooter>
         </ModalWrapper>
       </ModalContainer>
-    );
+    )
   }
 }
 

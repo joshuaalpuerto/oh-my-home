@@ -44,11 +44,10 @@ import {
   ButtonWrapper,
   TDCenter,
   TableHeaderName,
-  TableHeaderStatus,
+  TableHeaderStatus
 } from './styled'
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
   state = {
     modal: false,
     selectedUser: fromJS({})

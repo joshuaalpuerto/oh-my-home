@@ -16,8 +16,8 @@ import {
   ListWrapper
 } from './styled'
 
-const DetailsModal = ({ selectedUser, getFullName, ...props}) => (
-  <Modal { ...props }>
+const DetailsModal = ({ selectedUser, getFullName, ...props }) => (
+  <Modal {...props}>
     <div>
       <H2> <FormattedMessage {...messages.detailHeader} /> </H2>
       <AvatarWrapper>
