@@ -4,6 +4,8 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import { fromJS } from 'immutable'
 import { Helmet } from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
@@ -22,6 +24,7 @@ import H2 from 'components/H2'
 import TableData from 'components/TableData'
 import Button from 'components/Button'
 
+import DetailsModal from './DetailsModal'
 import Section from './Section'
 import messages from './messages'
 import reducer from './reducer'
@@ -37,16 +40,36 @@ import {
 } from './selectors'
 
 import {
+  ButtonOptionWrapper,
+  ButtonWrapper,
+  TDCenter,
   TableHeaderName,
   TableHeaderStatus,
-  TDCenter,
-  ButtonWrapper,
-  ButtonOptionWrapper
 } from './styled'
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  state = {
+    modal: false,
+    selectedUser: fromJS({})
+  }
+
+  _getFullName = (entity) => {
+    return `${ucFirst(entity.getIn(['name', 'title']))} ${ucFirst(entity.getIn(['name', 'last']))}, ${ucFirst(entity.getIn(['name', 'first']))}`
+  }
+
+  _handleModal = (toggle = null, selected = {}) => {
+    return () => {
+      this.setState(({ modal }) => ({
+        modal: toggle !== null ? toggle : !modal,
+        selectedUser: fromJS(selected)
+      }))
+    }
+  }
+
   render () {
     const { users, usersLoading, getUsers, toggleStatusUser } = this.props
+    const { modal, selectedUser } = this.state
     return (
       <article>
         <Helmet>
@@ -76,7 +99,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             tableBody={
               users.map((user, userIdx) => (
                 <tr key={user.get('id')}>
-                  <td> {`${ucFirst(user.getIn(['name', 'title']))} ${ucFirst(user.getIn(['name', 'last']))}, ${ucFirst(user.getIn(['name', 'first']))}`} </td>
+                  <td> {this._getFullName(user)} </td>
                   <TDCenter> {
                     user.get('deleted')
                       ? <FormattedMessage {...messages.infoInActive} />
@@ -84,7 +107,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   } </TDCenter>
                   <TDCenter>
                     <ButtonOptionWrapper>
-                      <Button handleRoute={getUsers} >
+                      <Button handleRoute={this._handleModal(true, user)} >
                         <FormattedMessage {...messages.viewButton} />
                       </Button>
                       <Button handleRoute={() => toggleStatusUser({ id: userIdx })} >
@@ -106,6 +129,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             </Button>
           </ButtonWrapper>
         </div>
+        <DetailsModal
+          open={modal}
+          selectedUser={selectedUser}
+          handleToggle={this._handleModal(false)}
+          getFullName={this._getFullName}
+        />
       </article>
     )
   }

@@ -30,6 +30,42 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.infoInActive',
     defaultMessage: 'In-Active'
   },
+  detailHeader: {
+    id: 'boilerplate.containers.HomePage.detailHeader',
+    defaultMessage: 'User Details'
+  },
+  detailAddressHeader: {
+    id: 'boilerplate.containers.HomePage.detailAddressHeader',
+    defaultMessage: 'Address'
+  },
+  detailName: {
+    id: 'boilerplate.containers.HomePage.detailName',
+    defaultMessage: 'Name: '
+  },
+  detailEmail: {
+    id: 'boilerplate.containers.HomePage.detailEmail',
+    defaultMessage: 'Email: '
+  },
+  detailContact: {
+    id: 'boilerplate.containers.HomePage.detailContact',
+    defaultMessage: 'Contact: '
+  },
+  detailAddressStreet: {
+    id: 'boilerplate.containers.HomePage.detailAddressStreet',
+    defaultMessage: 'Street: '
+  },
+  detailAddressCity: {
+    id: 'boilerplate.containers.HomePage.detailAddressCity',
+    defaultMessage: 'City: '
+  },
+  detailAddressState: {
+    id: 'boilerplate.containers.HomePage.detailAddressState',
+    defaultMessage: 'State: '
+  },
+  detailAddressPostcode: {
+    id: 'boilerplate.containers.HomePage.detailAddressPostcode',
+    defaultMessage: 'Postcode: '
+  },
   addUsersButton: {
     id: 'boilerplate.containers.HomePage.addUsersButton',
     defaultMessage: 'Add Users'
