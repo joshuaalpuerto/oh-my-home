@@ -87,10 +87,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   _dataHandler = (filter) => {
     return switchFn({
       active: this.props.usersActive,
-      inActive: this.props.usersInActive,
+      inActive: this.props.usersInActive
     })(this.props.users)(filter)
   }
-
 
   render () {
     const { usersLoading, getUsers, toggleStatusUser } = this.props
@@ -109,7 +108,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             </H2>
           </Section>
           <FilterWrapper>
-            Filter:
+            <FormattedMessage {...messages.pageFilter} />
             <Toggle
               value={filter}
               values={FILTERS}
