@@ -43,7 +43,8 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "cross-env NODE_ENV=test jest -u --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "fresh-install": "rm -rf node_modules && npm cache clean --force && yarn && yarn build"
   },
   "lint-staged": {
     "*.js": "standard --verbose | snazzy"
