@@ -20,6 +20,7 @@ import injectSaga from 'utils/injectSaga'
 
 import { ucFirst } from 'utils/strings'
 
+import Toggle from 'components/Toggle'
 import H2 from 'components/H2'
 import TableData from 'components/TableData'
 import Button from 'components/Button'
@@ -29,6 +30,10 @@ import Section from './Section'
 import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
+
+import {
+  FILTERS
+} from './constants'
 
 import {
   getUsersActions,
@@ -42,13 +47,15 @@ import {
 import {
   ButtonOptionWrapper,
   ButtonWrapper,
+  FilterWrapper,
   TDCenter,
   TableHeaderName,
-  TableHeaderStatus
+  TableHeaderStatus,
 } from './styled'
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
+    filter: 'all',
     modal: false,
     selectedUser: fromJS({})
   }
@@ -68,7 +75,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
   render () {
     const { users, usersLoading, getUsers, toggleStatusUser } = this.props
-    const { modal, selectedUser } = this.state
+    const { filter, modal, selectedUser } = this.state
     return (
       <article>
         <Helmet>
@@ -81,6 +88,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
               <FormattedMessage {...messages.pageTitle} />
             </H2>
           </Section>
+          <FilterWrapper>
+            Filter:
+            <Toggle
+              value={filter}
+              values={FILTERS}
+              messages={messages}
+              onToggle={() => {}}
+              />
+          </FilterWrapper>
           <TableData
             loading={usersLoading}
             isEmpty={equals(0, users.size)}

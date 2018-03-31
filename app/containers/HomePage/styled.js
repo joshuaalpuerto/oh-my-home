@@ -27,3 +27,10 @@ export const AvatarWrapper = styled.div`
 export const ListWrapper = styled.ul`
   list-style-type: none
 `
+
+export const FilterWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+`

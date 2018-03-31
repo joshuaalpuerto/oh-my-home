@@ -10,6 +10,18 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.pageTitle',
     defaultMessage: 'Users List'
   },
+  all: {
+    id: 'boilerplate.containers.HomePage.all',
+    defaultMessage: 'All'
+  },
+  active: {
+    id: 'boilerplate.containers.HomePage.active',
+    defaultMessage: 'Active'
+  },
+  inActive: {
+    id: 'boilerplate.containers.HomePage.inActive',
+    defaultMessage: 'In-Active'
+  },
   tableHeaderName: {
     id: 'boilerplate.containers.HomePage.tableHeaderName',
     defaultMessage: 'Name'
