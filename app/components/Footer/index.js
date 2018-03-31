@@ -3,15 +3,18 @@ import { FormattedMessage } from 'react-intl'
 
 import A from 'components/A'
 import LocaleToggle from 'containers/LocaleToggle'
-import Wrapper from './Wrapper'
+import Wrapper, {
+  LocaleWrapper
+} from './Wrapper'
 import messages from './messages'
 
 function Footer () {
   return (
     <Wrapper>
-      <section>
+      <LocaleWrapper>
+        <FormattedMessage {...messages.footerLocale} />
         <LocaleToggle />
-      </section>
+      </LocaleWrapper>
       <section>
         <FormattedMessage
           {...messages.authorMessage}
