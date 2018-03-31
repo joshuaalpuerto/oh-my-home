@@ -27,7 +27,7 @@
 
   "boilerplate.components.TableData.emptyState": "No users",
 
-
+  "boilerplate.components.Footer.footerLocale": "Language :",
   "boilerplate.components.Footer.author.message": "Made with love by {author}.",
   "boilerplate.containers.LocaleToggle.de": "de",
   "boilerplate.containers.LocaleToggle.en": "en",

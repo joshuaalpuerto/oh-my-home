@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Wrapper from '../Wrapper'
+import Wrapper, { LocaleWrapper } from '../Wrapper'
 
 describe('<Wrapper />', () => {
   it('should render an <footer> tag', () => {
@@ -23,5 +23,12 @@ describe('<Wrapper />', () => {
   it('should not adopt an invalid attribute', () => {
     const renderedComponent = shallow(<Wrapper attribute={'test'} />)
     expect(renderedComponent.prop('attribute')).toBeUndefined()
+  })
+})
+
+describe('<LocalWrapper>', () => {
+  it('should render', () => {
+    const renderedComponent = shallow(<LocaleWrapper />)
+    expect(renderedComponent.length).toEqual(1)
   })
 })

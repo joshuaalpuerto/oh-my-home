@@ -7,4 +7,9 @@ const Wrapper = styled.footer`
   border-top: 1px solid #666;
 `
 
+export const LocaleWrapper = styled.section`
+  display: flex;
+  align-items: center;
+`
+
 export default Wrapper
