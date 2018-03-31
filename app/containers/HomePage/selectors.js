@@ -10,6 +10,17 @@ const selectUsers = () => createSelector(
   selectHomeDomain,
   (substate) => substate.get('users')
 )
+
+const selectUsersActive = () => createSelector(
+  selectUsers(),
+  (substate) => substate.filter((user) => !user.get('deleted'))
+)
+
+const selectUsersInActive = () => createSelector(
+  selectUsers(),
+  (substate) => substate.filter((user) => !!user.get('deleted'))
+)
+
 const selectUsersLoading = () => createSelector(
   selectHomeDomain,
   (substate) => substate.get('usersLoading')
@@ -18,5 +29,7 @@ const selectUsersLoading = () => createSelector(
 export {
   selectHomeDomain,
   selectUsers,
+  selectUsersActive,
+  selectUsersInActive,
   selectUsersLoading
 }

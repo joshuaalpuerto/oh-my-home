@@ -19,6 +19,7 @@ import injectReducer from 'utils/injectReducer'
 import injectSaga from 'utils/injectSaga'
 
 import { ucFirst } from 'utils/strings'
+import { switchFn } from 'utils/logic'
 
 import Toggle from 'components/Toggle'
 import H2 from 'components/H2'
@@ -41,6 +42,8 @@ import {
 } from './actions'
 import {
   selectUsers,
+  selectUsersActive,
+  selectUsersInActive,
   selectUsersLoading
 } from './selectors'
 
@@ -81,9 +84,18 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }))
   }
 
+  _dataHandler = (filter) => {
+    return switchFn({
+      active: this.props.usersActive,
+      inActive: this.props.usersInActive,
+    })(this.props.users)(filter)
+  }
+
+
   render () {
-    const { users, usersLoading, getUsers, toggleStatusUser } = this.props
+    const { usersLoading, getUsers, toggleStatusUser } = this.props
     const { filter, modal, selectedUser } = this.state
+    const data = this._dataHandler(filter)
     return (
       <article>
         <Helmet>
@@ -107,7 +119,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           </FilterWrapper>
           <TableData
             loading={usersLoading}
-            isEmpty={equals(0, users.size)}
+            isEmpty={equals(0, data.size)}
             tableHeader={
               <tr>
                 <TableHeaderName>
@@ -120,7 +132,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
               </tr>
             }
             tableBody={
-              users.map((user, userIdx) => (
+              data.map((user, userIdx) => (
                 <tr key={user.get('id')}>
                   <td> {this._getFullName(user)} </td>
                   <TDCenter> {
@@ -165,6 +177,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
 HomePage.propTypes = {
   users: PropTypes.object.isRequired,
+  usersActive: PropTypes.object.isRequired,
+  usersInActive: PropTypes.object.isRequired,
   usersLoading: PropTypes.bool.isRequired,
   getUsers: PropTypes.func.isRequired,
   toggleStatusUser: PropTypes.func.isRequired
@@ -180,6 +194,8 @@ export function mapDispatchToProps (dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   users: selectUsers(),
+  usersActive: selectUsersActive(),
+  usersInActive: selectUsersInActive(),
   usersLoading: selectUsersLoading()
 })
 
