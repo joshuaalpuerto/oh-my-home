@@ -20,3 +20,10 @@ export const ButtonOptionWrapper = styled.div`
   display: flex;
   justify-content: center
 `
+export const AvatarWrapper = styled.div`
+  text-align: center;
+`
+
+export const ListWrapper = styled.ul`
+  list-style-type: none
+`

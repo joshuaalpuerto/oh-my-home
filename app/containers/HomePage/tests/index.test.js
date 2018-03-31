@@ -36,6 +36,35 @@ describe('<HomePage />', () => {
     ).toEqual(1)
   })
 
+  it('should return fullname', () => {
+    const props = {
+      ...minProps,
+      users: fromJS({
+        name: {
+          title: 'Mr',
+          first: 'Test',
+          last: 'Dev'
+        }
+      })
+    }
+
+    const renderComponent = wrapper(props)
+    const component = renderComponent.instance()
+    expect(
+      component._getFullName(props.users)
+    ).toEqual('Mr Dev, Test')
+  })
+
+  it('should return updated state', () => {
+    const renderComponent = wrapper(minProps)
+    const component = renderComponent.instance()
+    const updateState = component._handleModal(true)
+    updateState()
+    expect(
+      component.state.modal
+    ).toEqual(true)
+  })
+
   it('it should have TableData', () => {
     const renderComponent = wrapper(minProps)
     expect(
