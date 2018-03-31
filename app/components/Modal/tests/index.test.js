@@ -1,10 +1,30 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+/**
+ * Testing our Modal component
+ */
 
-// import Modal from '../index';
+import React from 'react'
+import { shallow } from 'enzyme'
+
+import Modal from '../index'
+
+const children = 'Test'
+const wrapper = (props = {}, enzyme = shallow) => enzyme(
+  <Modal {...props}>
+    {children}
+  </Modal>
+)
 
 describe('<Modal />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false)
+  const minProps = {
+    children: (<h1> test </h1>),
+    open: false,
+    handleToggle: () => {}
+  }
+
+  it('render without exploding', () => {
+    const renderComponent = wrapper(minProps)
+    expect(
+      renderComponent.length
+    ).toEqual(1)
   })
 })

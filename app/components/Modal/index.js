@@ -16,7 +16,7 @@ import {
   ModalContainer,
   ModalWrapper,
   ModalContent,
-  ModalFooter,
+  ModalFooter
 } from './styled'
 
 class Modal extends React.Component {
