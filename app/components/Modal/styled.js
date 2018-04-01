@@ -17,7 +17,7 @@ export const ModalWrapper = styled.div`
   height: auto;
   margin: auto;
   min-width: 300px;
-  width: 60%;
+  width: 400px;
 `
 
 export const ModalContent = styled.div`
