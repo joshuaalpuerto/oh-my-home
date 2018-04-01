@@ -21,6 +21,7 @@ import injectSaga from 'utils/injectSaga'
 import { ucFirst } from 'utils/strings'
 import { switchFn } from 'utils/logic'
 
+import A from 'components/A'
 import Toggle from 'components/Toggle'
 import H2 from 'components/H2'
 import TableData from 'components/TableData'
@@ -84,6 +85,13 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }))
   }
 
+  _shouldDisabled = () => {
+    const { userLoading } = this.props
+    const { filter } = this.state
+
+    return userLoading || filter === 'inActive'
+  }
+
   _dataHandler = (filter) => {
     return switchFn({
       active: this.props.usersActive,
@@ -133,7 +141,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             tableBody={
               data.map((user, userIdx) => (
                 <tr key={user.get('id')}>
-                  <td> {this._getFullName(user)} </td>
+                  <td> <A href='#' onClick={this._handleModal(true, user)} > {this._getFullName(user)} </A> </td>
                   <TDCenter> {
                     user.get('deleted')
                       ? <FormattedMessage {...messages.infoInActive} />
@@ -141,9 +149,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   } </TDCenter>
                   <TDCenter>
                     <ButtonOptionWrapper>
-                      <Button handleRoute={this._handleModal(true, user)} >
-                        <FormattedMessage {...messages.viewButton} />
-                      </Button>
                       <Button handleRoute={() => toggleStatusUser({ id: user.get('id') })} >
                         {
                         user.get('deleted')
@@ -158,7 +163,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             }
           />
           <ButtonWrapper>
-            <Button handleRoute={getUsers} disabled={usersLoading}>
+            <Button handleRoute={getUsers} disabled={this._shouldDisabled()}>
               <FormattedMessage {...messages.addUsersButton} />
             </Button>
           </ButtonWrapper>

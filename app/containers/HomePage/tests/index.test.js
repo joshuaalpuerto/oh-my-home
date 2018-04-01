@@ -83,6 +83,24 @@ describe('<HomePage />', () => {
     ).toEqual(minProps.users)
   })
 
+  it('should be disabled false', () => {
+    const renderComponent = wrapper(minProps)
+    const component = renderComponent.instance()
+
+    expect(
+      component._shouldDisabled()
+    ).toEqual(false)
+  })
+
+  it('should be disabled true', () => {
+    const renderComponent = wrapper(minProps)
+    const component = renderComponent.instance()
+    component._handleFilter({ target: { value: 'inActive' } })
+    expect(
+      component._shouldDisabled()
+    ).toEqual(true)
+  })
+
   it('should return updated state', () => {
     const renderComponent = wrapper(minProps)
     const component = renderComponent.instance()
