@@ -85,6 +85,13 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }))
   }
 
+  _shouldDisabled = () => {
+    const { userLoading } = this.props
+    const { filter } = this.state
+
+    return userLoading || filter === 'inActive'
+  }
+
   _dataHandler = (filter) => {
     return switchFn({
       active: this.props.usersActive,
@@ -156,7 +163,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             }
           />
           <ButtonWrapper>
-            <Button handleRoute={getUsers} disabled={usersLoading}>
+            <Button handleRoute={getUsers} disabled={this._shouldDisabled()}>
               <FormattedMessage {...messages.addUsersButton} />
             </Button>
           </ButtonWrapper>
