@@ -72,11 +72,14 @@ const Title = styled(H1)`
 `
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  _handleUsersRoute = () => {
+    this.props.changeRoute('/users')
+  }
   render () {
     return (
       <HomeWrapper>
         <Helmet>
-          <title>HomePage</title>
+          <title>Home</title>
           <meta name='description' content='A Oh My Home HomePage' />
         </Helmet>
         <HomeContainer>
@@ -92,7 +95,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 <Button handleRoute={() => {}}>
                   <FormattedMessage {...messages.buttonSearchLocation} />
                 </Button>
-                <Button handleRoute={() => {}}>
+                <Button handleRoute={this._handleUsersRoute}>
                   <FormattedMessage {...messages.buttonUserGenerator} />
                 </Button>
               </ButtonWrapper>
