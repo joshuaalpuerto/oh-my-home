@@ -15,13 +15,11 @@ import { compose } from 'redux'
 import { Row, Col } from 'antd'
 
 import OMHApp from 'images/home/ohmyhome-app.png'
-import injectReducer from 'utils/injectReducer'
 
 import Img from 'components/Img'
 import H1 from 'components/H1'
 import Button from 'components/Button'
 
-import reducer from './reducer'
 import messages from './messages'
 
 const HomeWrapper = styled.div`
@@ -121,9 +119,6 @@ function mapDispatchToProps (dispatch) {
 
 const withConnect = connect(null, mapDispatchToProps)
 
-const withReducer = injectReducer({ key: 'homePage', reducer })
-
 export default compose(
-  withReducer,
   withConnect
 )(HomePage)
