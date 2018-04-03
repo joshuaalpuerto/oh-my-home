@@ -1,23 +1,23 @@
 import { fromJS } from 'immutable'
 
 import {
-  selectHomeDomain,
+  selectUsersDomain,
   selectUsers,
   selectUsersActive,
   selectUsersInActive,
   selectUsersLoading
 } from '../selectors'
 
-describe('selectHomeDomain', () => {
-  it('should select the home state', () => {
-    const homeState = fromJS({
+describe('selectUsersDomain', () => {
+  it('should select the usersPage state', () => {
+    const usersPageState = fromJS({
       users: [],
       usersLoading: false
     })
     const mockedState = fromJS({
-      home: homeState
+      usersPage: usersPageState
     })
-    expect(selectHomeDomain(mockedState)).toEqual(homeState)
+    expect(selectUsersDomain(mockedState)).toEqual(usersPageState)
   })
 })
 
@@ -26,7 +26,7 @@ describe('selectUsers', () => {
   it('should select the users', () => {
     const users = fromJS([{ user: 1 }])
     const mockedState = fromJS({
-      home: {
+      usersPage: {
         users
       }
     })
@@ -40,7 +40,7 @@ describe('selectUsersActive', () => {
   it('should select users Active', () => {
     const users = fromJS([])
     const mockedState = fromJS({
-      home: {
+      usersPage: {
         users
       }
     })
@@ -54,7 +54,7 @@ describe('selectUsersInActive', () => {
   it('should select users InActive', () => {
     const users = fromJS([ { deleted: true } ])
     const mockedState = fromJS({
-      home: {
+      usersPage: {
         users
       }
     })
@@ -67,7 +67,7 @@ describe('selectUsersLoading', () => {
   it('should select the usersLoading', () => {
     const usersLoading = false
     const mockedState = fromJS({
-      home: {
+      usersPage: {
         usersLoading
       }
     })

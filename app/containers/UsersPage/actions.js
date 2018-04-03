@@ -1,5 +1,5 @@
 /*
- * Home Actions
+ * UsersPage Actions
  */
 
 import {

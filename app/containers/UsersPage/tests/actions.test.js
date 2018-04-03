@@ -10,7 +10,7 @@ import {
   toggleStatusUserActions
 } from '../actions'
 
-describe('HomePage Actions', () => {
+describe('UsersPage Actions', () => {
   describe('Users Actions', () => {
     it('should call GET_USERS', () => {
       const payload = {}

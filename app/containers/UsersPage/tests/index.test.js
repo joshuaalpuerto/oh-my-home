@@ -1,5 +1,5 @@
 /**
- * Test the HomePage
+ * Test the UsersPage
  */
 
 import React from 'react'
@@ -8,7 +8,7 @@ import { shallow } from 'enzyme'
 
 import TableData from 'components/TableData'
 import Button from 'components/Button'
-import { HomePage, mapDispatchToProps } from '../index'
+import { UsersPage, mapDispatchToProps } from '../index'
 import {
   getUsersActions,
   toggleStatusUserActions
@@ -16,12 +16,12 @@ import {
 
 const children = (<h1>Test</h1>)
 const wrapper = (props = {}, enzyme = shallow) => enzyme(
-  <HomePage {...props}>
+  <UsersPage {...props}>
     {children}
-  </HomePage>
+  </UsersPage>
 )
 
-describe('<HomePage />', () => {
+describe('<UsersPage />', () => {
   const minProps = {
     users: fromJS([]),
     usersActive: fromJS([]),

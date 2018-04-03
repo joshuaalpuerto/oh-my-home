@@ -1,5 +1,5 @@
 /*
- * HomePage
+ * UsersPage
  */
 
 import React from 'react'
@@ -57,7 +57,7 @@ import {
   TableHeaderStatus
 } from './styled'
 
-export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class UsersPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     filter: 'all',
     modal: false,
@@ -179,7 +179,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 }
 
-HomePage.propTypes = {
+UsersPage.propTypes = {
   users: PropTypes.object.isRequired,
   usersActive: PropTypes.object.isRequired,
   usersInActive: PropTypes.object.isRequired,
@@ -205,11 +205,11 @@ const mapStateToProps = createStructuredSelector({
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
 
-const withReducer = injectReducer({ key: 'home', reducer })
-const withSaga = injectSaga({ key: 'home', saga })
+const withReducer = injectReducer({ key: 'usersPage', reducer })
+const withSaga = injectSaga({ key: 'usersPage', saga })
 
 export default compose(
   withReducer,
   withSaga,
   withConnect
-)(HomePage)
+)(UsersPage)
