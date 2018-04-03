@@ -6,8 +6,16 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  header: {
-    id: 'app.containers.HomePage.header',
-    defaultMessage: 'This is HomePage container !'
+  pageTitle: {
+    id: 'app.containers.HomePage.pageTitle',
+    defaultMessage: 'Oh My Home Implementations'
+  },
+  buttonSearchLocation: {
+    id: 'app.containers.HomePage.buttonSearchLocation',
+    defaultMessage: 'Search Location'
+  },
+  buttonUserGenerator: {
+    id: 'app.containers.HomePage.buttonUserGenerator',
+    defaultMessage: 'Users Generator'
   }
 })
