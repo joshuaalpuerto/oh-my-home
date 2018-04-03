@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { Switch, Route } from 'react-router-dom'
 
+import HomePage from 'containers/HomePage/Loadable'
 import UsersPage from 'containers/UsersPage/Loadable'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Footer from 'components/Footer'
@@ -34,7 +35,8 @@ export default function App () {
         <meta name='description' content='A Oh My Home application' />
       </Helmet>
       <Switch>
-        <Route exact path='/' component={UsersPage} />
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/users' component={UsersPage} />
         <Route path='' component={NotFoundPage} />
       </Switch>
       <Footer />
