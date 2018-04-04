@@ -7,17 +7,19 @@
  */
 
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import { Switch, Route } from 'react-router-dom'
+import { Layout } from 'antd'
 
 import HomePage from 'containers/HomePage/Loadable'
 import UsersPage from 'containers/UsersPage/Loadable'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Footer from 'components/Footer'
 
+const { Content } = Layout
+
 const AppWrapper = styled.div`
-  margin: 0 auto;
   display: flex;
   min-height: 100%;
   flex-direction: column;
@@ -26,18 +28,22 @@ const AppWrapper = styled.div`
 export default function App () {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate='%s - Oh My Home'
-        defaultTitle='Oh My Home'
-      >
-        <meta name='description' content='A Oh My Home application' />
-      </Helmet>
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/users' component={UsersPage} />
-        <Route path='' component={NotFoundPage} />
-      </Switch>
-      <Footer />
+      <Layout>
+        <Helmet
+          titleTemplate='%s - Oh My Home'
+          defaultTitle='Oh My Home'
+        >
+          <meta name='description' content='A Oh My Home application' />
+        </Helmet>
+        <Content>
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/users' component={UsersPage} />
+            <Route path='' component={NotFoundPage} />
+          </Switch>
+        </Content>
+        <Footer />
+      </Layout>
     </AppWrapper>
   )
 }

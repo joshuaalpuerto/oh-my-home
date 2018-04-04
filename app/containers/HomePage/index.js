@@ -17,6 +17,7 @@ import { Row, Col } from 'antd'
 import OMHApp from 'images/home/ohmyhome-app.png'
 
 import Img from 'components/Img'
+import Container from 'components/Container'
 import H1 from 'components/H1'
 import Button from 'components/Button'
 
@@ -30,12 +31,10 @@ const HomeWrapper = styled.div`
   width: 100%;
 `
 
-const HomeContainer = styled.div`
+const HomeContainer = styled(Container)`
   display: flex;
   margin: 100px  auto 0;
-  max-width: 80%;
   position: relative;
-  width: 80%;
   z-index: 2;
 `
 
@@ -59,10 +58,14 @@ const ButtonWrapper = styled.div`
 const TopBanner = styled.div`
   position: absolute;
   z-index: 1;
-  top: 0;
+  top: -1px;
   width: 100%;
-  background: #fff;
+  background: #F0F2F5;
   height: 26%;
+
+  @media (max-width: 764px) {
+    display:none;
+  }
 `
 
 const Title = styled(H1)`
@@ -83,7 +86,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <meta name='description' content='A Oh My Home HomePage' />
         </Helmet>
         <HomeContainer>
-          <RowWrapper gutter={16} type='flex' justify='space-around' align='middle'>
+          <RowWrapper gutter={16} type='flex' justify='center' align='middle'>
             <Col xs={0} sm={0} md={8} lg={8} xl={8}>
               <ImageWrapper>
                 <Img alt='app' src={OMHApp} />
