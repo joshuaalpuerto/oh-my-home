@@ -39,6 +39,10 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
     intl: intlShape.isRequired
   }
 
+  state = {
+    value: ''
+  }
+
   constructor (props) {
     super(props)
 
