@@ -6,8 +6,16 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  header: {
-    id: 'app.containers.SearchPage.header',
-    defaultMessage: 'This is SearchPage container !'
+  pageTitle: {
+    id: 'app.containers.SearchPage.pageTitle',
+    defaultMessage: 'Find where you want to stay.'
+  },
+  flatTypePlaceholder: {
+    id: 'app.containers.SearchPage.flatTypePlaceholder',
+    defaultMessage: 'Flat Type'
+  },
+  buttonSearch: {
+    id: 'app.containers.SearchPage.buttonSearch',
+    defaultMessage: 'Search'
   }
 })
