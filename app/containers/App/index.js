@@ -13,6 +13,7 @@ import { Switch, Route } from 'react-router-dom'
 import { Layout } from 'antd'
 
 import HomePage from 'containers/HomePage/Loadable'
+import SearchPage from 'containers/SearchPage/Loadable'
 import UsersPage from 'containers/UsersPage/Loadable'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Footer from 'components/Footer'
@@ -38,6 +39,7 @@ export default function App () {
         <Content>
           <Switch>
             <Route exact path='/' component={HomePage} />
+            <Route exact path='/search' component={SearchPage} />
             <Route exact path='/users' component={UsersPage} />
             <Route path='' component={NotFoundPage} />
           </Switch>
