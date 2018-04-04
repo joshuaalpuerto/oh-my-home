@@ -39,14 +39,6 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
     intl: intlShape.isRequired
   }
 
-  state = {
-    data: [],
-    value: [],
-    fetching: false
-  }
-
-  _lastFetchId = 0
-
   constructor (props) {
     super(props)
 
