@@ -6,8 +6,8 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  header: {
-    id: 'app.containers.Autocomplete.header',
-    defaultMessage: 'This is Autocomplete container !'
+  searchPlaceholder: {
+    id: 'app.containers.Autocomplete.searchPlaceholder',
+    defaultMessage: 'Search Location...'
   }
 })

@@ -8,7 +8,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
 import { connect } from 'react-redux'
-// import { FormattedMessage } from 'react-intl'
+import { injectIntl, intlShape } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 import { Select, Spin } from 'antd'
@@ -18,7 +18,7 @@ import injectReducer from 'utils/injectReducer'
 
 import reducer from './reducer'
 import saga from './saga'
-// import messages from './messages'
+import messages from './messages'
 
 import {
   getAutoCompleteAction
@@ -35,7 +35,8 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
     options: PropTypes.object.isRequired,
     optionsLoading: PropTypes.bool.isRequired,
     getAutoComplete: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    intl: intlShape.isRequired
   }
 
   state = {
@@ -61,16 +62,17 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   }
 
   render () {
-    const { options, optionsLoading } = this.props
+    const { options, optionsLoading, intl } = this.props
     const { value } = this.state
     return (
       <Select
+        allowClear
         size='large'
         mode='combobox'
         showArrow={false}
         labelInValue
         value={value}
-        placeholder='Select users'
+        placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
         filterOption={false}
         onSearch={this._fetchUser}
@@ -110,4 +112,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect
-)(Autocomplete)
+)(injectIntl(Autocomplete))
