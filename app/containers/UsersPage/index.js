@@ -54,7 +54,8 @@ import {
   FilterWrapper,
   TDCenter,
   TableHeaderName,
-  TableHeaderStatus
+  TableHeaderStatus,
+  UserContainer
 } from './styled'
 
 export class UsersPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -104,7 +105,7 @@ export class UsersPage extends React.PureComponent { // eslint-disable-line reac
     const { filter, modal, selectedUser } = this.state
     const data = this._dataHandler(filter)
     return (
-      <article>
+      <UserContainer>
         <Helmet>
           <title>Users</title>
           <meta name='description' content="A Oh My Home application user\'s lists" />
@@ -174,7 +175,7 @@ export class UsersPage extends React.PureComponent { // eslint-disable-line reac
           handleToggle={this._handleModal(false)}
           getFullName={this._getFullName}
         />
-      </article>
+      </UserContainer>
     )
   }
 }
