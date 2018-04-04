@@ -28,6 +28,19 @@ describe('<HomePage />', () => {
     ).toEqual(1)
   })
 
+  it('should call changeRoute to user page', () => {
+    const props = {
+      ...minProps,
+      changeRoute: jest.fn()
+    }
+    const renderComponent = wrapper(props)
+    const component = renderComponent.instance()
+    component._handleUsersRoute()
+    expect(
+      component.props.changeRoute
+    ).toBeCalled()
+  })
+
   describe('mapDispatchToProps', () => {
     describe('changeRoute', () => {
       it('should be injected', () => {
