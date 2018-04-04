@@ -66,7 +66,6 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
         size='large'
         mode='combobox'
         showArrow={false}
-        labelInValue
         value={value}
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
