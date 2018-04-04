@@ -91,7 +91,7 @@ const mapStateToProps = createStructuredSelector({
   optionsLoading: selectOptionsLoading()
 })
 
-function mapDispatchToProps (dispatch) {
+export function mapDispatchToProps (dispatch) {
   return {
     getAutoComplete: (str) => dispatch(getAutoCompleteAction(str)),
     dispatch
