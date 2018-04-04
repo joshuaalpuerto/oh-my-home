@@ -113,7 +113,7 @@ HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-function mapDispatchToProps (dispatch) {
+export function mapDispatchToProps (dispatch) {
   return {
     changeRoute: (url) => dispatch(push(url)),
     dispatch
