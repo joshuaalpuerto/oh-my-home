@@ -3,7 +3,7 @@
 exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 1`] = `
 Object {
   "@@redux-saga/HELPER": true,
-  "name": "takeLatest(boilerplate/Home/GET_USERS, fetchUsers)",
+  "name": "takeLatest(boilerplate/UsersPage/GET_USERS, fetchUsers)",
   "next": [Function],
   "return": [Function],
   "throw": [Function],
@@ -30,7 +30,7 @@ Object {
 exports[`HomePage Saga fetchUsersSagas fetchUsers should set setUsersAction 1`] = `
 Object {
   "@@redux-saga/HELPER": true,
-  "name": "takeLatest(boilerplate/Home/GET_USERS, fetchUsers)",
+  "name": "takeLatest(boilerplate/UsersPage/GET_USERS, fetchUsers)",
   "next": [Function],
   "return": [Function],
   "throw": [Function],

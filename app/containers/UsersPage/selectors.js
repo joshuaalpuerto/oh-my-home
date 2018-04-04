@@ -1,13 +1,13 @@
 /**
- * Homepage selectors
+ * UsersPage selectors
  */
 
 import { createSelector } from 'reselect'
 
-const selectHomeDomain = (state) => state.get('home')
+const selectUsersDomain = (state) => state.get('usersPage')
 
 const selectUsers = () => createSelector(
-  selectHomeDomain,
+  selectUsersDomain,
   (substate) => substate.get('users')
 )
 
@@ -22,12 +22,12 @@ const selectUsersInActive = () => createSelector(
 )
 
 const selectUsersLoading = () => createSelector(
-  selectHomeDomain,
+  selectUsersDomain,
   (substate) => substate.get('usersLoading')
 )
 
 export {
-  selectHomeDomain,
+  selectUsersDomain,
   selectUsers,
   selectUsersActive,
   selectUsersInActive,

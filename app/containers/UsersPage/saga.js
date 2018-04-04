@@ -32,10 +32,10 @@ export function * fetchUsersSagas () {
 }
 
 // All sagas to be loaded
-export function * homePageSagas () {
+export function * usersPageSagas () {
   yield [
     fork(fetchUsersSagas)
   ]
 }
 
-export default homePageSagas
+export default usersPageSagas
