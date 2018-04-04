@@ -1,0 +1,173 @@
+{
+  "predictions" : [
+     {
+        "description" : "Singapore",
+        "id" : "de9886df6eae88551e41600d0927dc8eb9f2c6ca",
+        "matched_substrings" : [
+           {
+              "length" : 3,
+              "offset" : 0
+           }
+        ],
+        "place_id" : "ChIJyY4rtGcX2jERIKTarqz3AAQ",
+        "reference" : "CjQhAAAAg854lgFm1A90zoNSEm6IOL3pUC9wmGQwnXhpub7e-j15CXeaNUDVqb0neoz2cWMXEhBR9BSZyZNhJAjoJHbMwCPkGhTQRy1bqKtMX0SCSGJHfMhNBPtIsw",
+        "structured_formatting" : {
+           "main_text" : "Singapore",
+           "main_text_matched_substrings" : [
+              {
+                 "length" : 3,
+                 "offset" : 0
+              }
+           ]
+        },
+        "terms" : [
+           {
+              "offset" : 0,
+              "value" : "Singapore"
+           }
+        ],
+        "types" : [ "locality", "political", "geocode" ]
+     },
+     {
+        "description" : "Airport Boulevard, Singapore Changi International Airport (SIN), Singapore",
+        "id" : "6b5014ed2bfb71bc0d0ee62f378c12a8fc5d2d82",
+        "matched_substrings" : [
+           {
+              "length" : 3,
+              "offset" : 19
+           }
+        ],
+        "place_id" : "ChIJ483Qk9YX2jERA0VOQV7d1tY",
+        "reference" : "CmRZAAAAo-wLZ8fYdtWAzeFlhk3yLxif8nFWvLuAIc20SYEdu2yVKPzUq37rskzep48dKE0MrqwzFQwq4ofbkkse0B3nOblf0v6QwWqLny1zEnXeSO2QngLXTFcJYwccQkZ8QjghEhC9KKxZEVEgzy6wxlJZgoLWGhRauMwtCs_LDRyVM5E9ma0BpDwGPg",
+        "structured_formatting" : {
+           "main_text" : "Singapore Changi International Airport (SIN)",
+           "main_text_matched_substrings" : [
+              {
+                 "length" : 3,
+                 "offset" : 0
+              }
+           ],
+           "secondary_text" : "Airport Boulevard, Singapore"
+        },
+        "terms" : [
+           {
+              "offset" : 0,
+              "value" : "Airport Boulevard"
+           },
+           {
+              "offset" : 19,
+              "value" : "Singapore Changi International Airport (SIN)"
+           },
+           {
+              "offset" : 65,
+              "value" : "Singapore"
+           }
+        ],
+        "types" : [ "establishment" ]
+     },
+     {
+        "description" : "Sin Ming Drive, Singapore",
+        "id" : "02f25b2fffce7d57d9cc8cfb30a16341b4098b8a",
+        "matched_substrings" : [
+           {
+              "length" : 3,
+              "offset" : 0
+           }
+        ],
+        "place_id" : "EhlTaW4gTWluZyBEcml2ZSwgU2luZ2Fwb3Jl",
+        "reference" : "CiQdAAAAh28LT5xSLLToxYNgoB6og1Pv4AeZF_ltbMwe0rhL__oSEEQVj0bvR2FAJxkTEBNV4KQaFEMLqQ-TEGY8ELRF_I7Q_1AZNeK8",
+        "structured_formatting" : {
+           "main_text" : "Sin Ming Drive",
+           "main_text_matched_substrings" : [
+              {
+                 "length" : 3,
+                 "offset" : 0
+              }
+           ],
+           "secondary_text" : "Singapore"
+        },
+        "terms" : [
+           {
+              "offset" : 0,
+              "value" : "Sin Ming Drive"
+           },
+           {
+              "offset" : 16,
+              "value" : "Singapore"
+           }
+        ],
+        "types" : [ "route", "geocode" ]
+     },
+     {
+        "description" : "Dover Road, Singapore Polytechnic, Singapore",
+        "id" : "c2747143dbf8773353e1054a52f45dbe5fad3358",
+        "matched_substrings" : [
+           {
+              "length" : 3,
+              "offset" : 12
+           }
+        ],
+        "place_id" : "ChIJFXzxL2Aa2jERnoWTOdJdVKk",
+        "reference" : "CkQ7AAAATUDmj94No-HEbgcrnBBrMmnXVee_F8kipyOU9kBkatGHqJvGwcsp3O8zUq4bfCODDSCWvw1ei_lMkUdx9vZDOBIQXVxyE8s13Nnvd3LdaAtuNRoUUGAn-txXRS9Mn7CncBxxsVdV2vs",
+        "structured_formatting" : {
+           "main_text" : "Singapore Polytechnic",
+           "main_text_matched_substrings" : [
+              {
+                 "length" : 3,
+                 "offset" : 0
+              }
+           ],
+           "secondary_text" : "Dover Road, Singapore"
+        },
+        "terms" : [
+           {
+              "offset" : 0,
+              "value" : "Dover Road"
+           },
+           {
+              "offset" : 12,
+              "value" : "Singapore Polytechnic"
+           },
+           {
+              "offset" : 35,
+              "value" : "Singapore"
+           }
+        ],
+        "types" : [ "establishment" ]
+     },
+     {
+        "description" : "SingPost Centre, Singapore",
+        "id" : "9e6b52d7f39e9e969de08129c3f70cf13b0ec0c8",
+        "matched_substrings" : [
+           {
+              "length" : 3,
+              "offset" : 0
+           }
+        ],
+        "place_id" : "ChIJVbLTWRgY2jERx9kmxvBVmRw",
+        "reference" : "CjQoAAAA-DkRIRSH0fa6II691dhbCGcFVfXy8MYY6hoZ28zIyTQ5Ks5pfRd5crmq-jRTvfqSEhCM0XWjlG9f_NO-yXA1Hw97GhT_FqMtppqAurw_GNwJTpFBoFK-iQ",
+        "structured_formatting" : {
+           "main_text" : "SingPost Centre",
+           "main_text_matched_substrings" : [
+              {
+                 "length" : 3,
+                 "offset" : 0
+              }
+           ],
+           "secondary_text" : "Singapore"
+        },
+        "terms" : [
+           {
+              "offset" : 0,
+              "value" : "SingPost Centre"
+           },
+           {
+              "offset" : 17,
+              "value" : "Singapore"
+           }
+        ],
+        "types" : [ "establishment" ]
+     }
+  ],
+  "status" : "OK"
+}
