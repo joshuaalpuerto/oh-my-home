@@ -78,6 +78,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   _handleUsersRoute = () => {
     this.props.changeRoute('/users')
   }
+
+  _handleSearchRoute = () => {
+    this.props.changeRoute('/search')
+  }
+
   render () {
     return (
       <HomeWrapper>
@@ -95,7 +100,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <Col xs={24} sm={24} md={16} lg={16} xl={16} value={100}>
               <Title><FormattedMessage {...messages.pageTitle} /></Title>
               <ButtonWrapper>
-                <Button handleRoute={() => {}}>
+                <Button handleRoute={this._handleSearchRoute}>
                   <FormattedMessage {...messages.buttonSearchLocation} />
                 </Button>
                 <Button handleRoute={this._handleUsersRoute}>
