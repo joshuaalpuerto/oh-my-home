@@ -7,24 +7,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
-import { createStructuredSelector } from 'reselect'
-import { compose } from 'redux'
 import { Select, Row, Col } from 'antd'
-
-import injectSaga from 'utils/injectSaga'
-import injectReducer from 'utils/injectReducer'
 
 import H1 from 'components/H1'
 import Autocomplete from 'containers/Autocomplete'
 import Container from 'components/Container'
 import Button from 'components/Button'
 
-import makeSelectSearchPage from './selectors'
-import reducer from './reducer'
-import saga from './saga'
 import messages from './messages'
 
 const Option = Select.Option
@@ -120,23 +111,4 @@ SearchPage.propTypes = {
   intl: intlShape.isRequired
 }
 
-const mapStateToProps = createStructuredSelector({
-  searchpage: makeSelectSearchPage()
-})
-
-function mapDispatchToProps (dispatch) {
-  return {
-    dispatch
-  }
-}
-
-const withConnect = connect(mapStateToProps, mapDispatchToProps)
-
-const withReducer = injectReducer({ key: 'searchPage', reducer })
-const withSaga = injectSaga({ key: 'searchPage', saga })
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect
-)(injectIntl(SearchPage))
+export default injectIntl(SearchPage)
