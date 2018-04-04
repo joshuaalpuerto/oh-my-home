@@ -1,10 +1,47 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+/**
+ * Test the UsersPage
+ */
 
-// import { SearchPage } from '../index';
+import React from 'react'
+import { shallow } from 'enzyme'
+
+import { SearchPage } from '../index'
+
+const children = (<h1>Test</h1>)
+const wrapper = (props = {}, enzyme = shallow) => enzyme(
+  <SearchPage {...props}>
+    {children}
+  </SearchPage>
+)
 
 describe('<SearchPage />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false)
+  const minProps = {
+    intl: {
+      formatDate: () => {},
+      formatTime: () => {},
+      formatRelative: () => {},
+      formatNumber: () => {},
+      formatPlural: () => {},
+      formatMessage: () => {},
+      formatHTMLMessage: () => {},
+      now: () => {}
+    },
+    dispatch: () => {}
+  }
+
+  it('render without exploding', () => {
+    const renderComponent = wrapper(minProps)
+    expect(
+      renderComponent.length
+    ).toEqual(1)
   })
+
+  // it('should handle filter active', () => {
+  //   const renderComponent = wrapper(minProps)
+  //   const component = renderComponent.instance()
+  //   component._handleFilter({ target: { value: 'active' } })
+  //   expect(
+  //     component.state.filter
+  //   ).toEqual('active')
+  // })
 })
