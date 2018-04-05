@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete Saga fetchAutocompleteSagas fetchAutocomplete should match the snapshot for setting token 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/GET_AUTOCOMPLETE, fetchAutocomplete)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga fetchAutocompleteSagas fetchAutocomplete should match the snapshot for setting token 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "http://qa.omh.sg/test/autocomplete?input=undefined",
+      Object {
+        "method": "GET",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Autocomplete Saga fetchAutocompleteSagas fetchAutocomplete should set setAutoCompleteAction 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/GET_AUTOCOMPLETE, fetchAutocomplete)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
