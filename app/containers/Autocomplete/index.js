@@ -35,7 +35,6 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
     options: PropTypes.object.isRequired,
     optionsLoading: PropTypes.bool.isRequired,
     getAutoComplete: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
     intl: intlShape.isRequired
   }
 
@@ -50,7 +49,9 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   }
 
   _fetchUser = (value) => {
-    this.props.getAutoComplete(value)
+    if (value) {
+      this.props.getAutoComplete(value)
+    }
   }
 
   _handleChange = (value) => {
