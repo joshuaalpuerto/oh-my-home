@@ -68,7 +68,6 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
 
   render () {
     const { options, optionsLoading, intl } = this.props
-    const { value } = this.state
     return (
       <Select
         allowClear
