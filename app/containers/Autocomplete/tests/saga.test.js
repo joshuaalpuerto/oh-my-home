@@ -27,14 +27,14 @@ describe('Autocomplete Saga', () => {
       // pass empty object for params.
       const fetchAutocompleteMock = fetchAutocomplete(args)
 
-      // it('should match the snapshot for setting token', () => {
-      //   const settingToken = fetchAutocompleteMock.next().value
-      //   expect(settingToken).toMatchSnapshot()
-      // })
+      it('should match the snapshot for setting token', () => {
+        const callingAPI = fetchAutocompleteMock.next().value
+        expect(callingAPI).toMatchSnapshot()
+      })
 
       it('should set setAutoCompleteAction', () => {
         // eslint-disable-next-line no-unused-vars
-        const settingData = fetchAutocompleteMock.next().value
+        const settingData = fetchAutocompleteMock.next(results).value
         expect(settingData).toEqual(
           put(setAutoCompleteAction(results.predictions))
         )

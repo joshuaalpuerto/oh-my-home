@@ -21,6 +21,7 @@ describe('<Autocomplete />', () => {
     optionsLoading: false,
     getAutoComplete: () => {},
     dispatch: () => {},
+    onUpdate: () => {},
     intl: {
       formatDate: () => {},
       formatTime: () => {},

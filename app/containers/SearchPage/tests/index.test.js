@@ -26,6 +26,7 @@ describe('<SearchPage />', () => {
       formatHTMLMessage: () => {},
       now: () => {}
     },
+    changeRoute: () => {},
     dispatch: () => {}
   }
 
