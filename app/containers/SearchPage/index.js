@@ -6,7 +6,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import { Select, Row, Col } from 'antd'
@@ -107,7 +107,6 @@ export class SearchPage extends React.PureComponent { // eslint-disable-line rea
 }
 
 SearchPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   intl: intlShape.isRequired
 }
 
