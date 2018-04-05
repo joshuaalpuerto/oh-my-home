@@ -8,17 +8,14 @@ import React from 'react'
 import styled from 'styled-components'
 // import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
-import { Select, Row, Col } from 'antd'
+import { FormattedMessage } from 'react-intl'
+import { Row } from 'antd'
 
 import H1 from 'components/H1'
-import Autocomplete from 'containers/Autocomplete'
 import Container from 'components/Container'
-import Button from 'components/Button'
+import SearchLocation from 'components/SearchLocation'
 
 import messages from './messages'
-
-const Option = Select.Option
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -52,18 +49,9 @@ const Title = styled(H1)`
 `
 
 export class SearchPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  state = {
-    flatType: ''
-  }
-
-  _handleFlatChange = (value) => {
-    this.setState({
-      flatType: value
-    })
-  }
+  static propTypes = {}
 
   render () {
-    const { intl } = this.props
     return (
       <SearchWrapper>
         <Helmet>
@@ -75,30 +63,7 @@ export class SearchPage extends React.PureComponent { // eslint-disable-line rea
             <Title>
               <FormattedMessage {...messages.pageTitle} />
             </Title>
-            <Row gutter={16} type='flex' justify='center' align='middle'>
-              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                <Autocomplete />
-              </Col>
-              <Col xs={24} sm={24} md={4} lg={4} xl={4}>
-                <Select
-                  size='large'
-                  placeholder={intl.formatMessage(messages.flatTypePlaceholder)}
-                  style={{ width: '100%' }}
-                  onChange={this._handleFlatChange}
-                >
-                  <Option value='room2'>2 Rooms</Option>
-                  <Option value='room3'>3 Rooms</Option>
-                  <Option value='room4' >4 Rooms</Option>
-                  <Option value='room5'>5 Rooms</Option>
-                  <Option value='exec-hbd'>Executive HDB</Option>
-                </Select>
-              </Col>
-              <Col xs={24} sm={24} md={4} lg={4} xl={4}>
-                <Button>
-                  <FormattedMessage {...messages.buttonSearch} />
-                </Button>
-              </Col>
-            </Row>
+            <SearchLocation />
           </RowWrapper>
         </SearchContainer>
       </SearchWrapper>
@@ -106,8 +71,4 @@ export class SearchPage extends React.PureComponent { // eslint-disable-line rea
   }
 }
 
-SearchPage.propTypes = {
-  intl: intlShape.isRequired
-}
-
-export default injectIntl(SearchPage)
+export default SearchPage
