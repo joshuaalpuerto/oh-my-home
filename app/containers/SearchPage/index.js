@@ -6,7 +6,10 @@
 
 import React from 'react'
 import styled from 'styled-components'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { push } from 'react-router-redux'
 import { Helmet } from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 import { Row } from 'antd'
@@ -49,7 +52,18 @@ const Title = styled(H1)`
 `
 
 export class SearchPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  static propTypes = {}
+  static propTypes = {
+    changeRoute: PropTypes.func.isRequired
+  }
+
+  state = {
+    flatType: '',
+    location: {}
+  }
+
+  _handleSearchUpdate = ({ flatType, location: { value, description } }) => {
+    this.props.changeRoute(`/maps?place_id=${value}&flatType=${flatType}&q=${encodeURIComponent(description)}`)
+  }
 
   render () {
     return (
@@ -63,7 +77,9 @@ export class SearchPage extends React.PureComponent { // eslint-disable-line rea
             <Title>
               <FormattedMessage {...messages.pageTitle} />
             </Title>
-            <SearchLocation />
+            <SearchLocation
+              onSearch={this._handleSearchUpdate}
+            />
           </RowWrapper>
         </SearchContainer>
       </SearchWrapper>
@@ -71,4 +87,15 @@ export class SearchPage extends React.PureComponent { // eslint-disable-line rea
   }
 }
 
-export default SearchPage
+export function mapDispatchToProps (dispatch) {
+  return {
+    changeRoute: (url) => dispatch(push(url)),
+    dispatch
+  }
+}
+
+const withConnect = connect(null, mapDispatchToProps)
+
+export default compose(
+  withConnect
+)(SearchPage)

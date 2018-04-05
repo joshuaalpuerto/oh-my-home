@@ -8,6 +8,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import { Select, Row, Col } from 'antd'
+import {
+  isEmpty
+} from 'ramda'
 
 import Autocomplete from 'containers/Autocomplete'
 import Button from 'components/Button'
@@ -22,20 +25,19 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
     location: {}
   }
 
-  _handleLocationChange = (location) => {
+  _handleUpdateKeyState= (key) => (value) => {
     this.setState({
-      location
+      [key]: value
     })
   }
 
-  _handleFlatChange = (flatType) => {
-    this.setState({
-      flatType
-    })
+  _handleSearch = () => {
+    this.props.onSearch(this.state)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    this.props.onUpdate(this.state)
+  _shouldBeDisabled = () => {
+    const { flatType, location } = this.state
+    return !flatType || isEmpty(location)
   }
 
   render () {
@@ -43,14 +45,14 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
     return (
       <Row gutter={16} type='flex' justify='center' align='middle'>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <Autocomplete onUpdate={this._handleLocationChange}/>
+          <Autocomplete onUpdate={this._handleUpdateKeyState('location')} />
         </Col>
         <Col xs={24} sm={24} md={4} lg={4} xl={4}>
           <Select
             size='large'
             placeholder={intl.formatMessage(messages.flatTypePlaceholder)}
             style={{ width: '100%' }}
-            onChange={this._handleFlatChange}
+            onChange={this._handleUpdateKeyState('flatType')}
             >
             <Option value='room2'>2 Rooms</Option>
             <Option value='room3'>3 Rooms</Option>
@@ -60,7 +62,7 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
           </Select>
         </Col>
         <Col xs={24} sm={24} md={4} lg={4} xl={4}>
-          <Button>
+          <Button disabled={this._shouldBeDisabled()} handleRoute={this._handleSearch}>
             <FormattedMessage {...messages.buttonSearch} />
           </Button>
         </Col>
@@ -70,7 +72,7 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
 }
 
 SearchLocation.propTypes = {
-  onUpdate: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   intl: intlShape.isRequired
 }
 
