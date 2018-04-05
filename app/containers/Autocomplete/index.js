@@ -32,6 +32,7 @@ const Option = Select.Option
 
 export class Autocomplete extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
+    onUpdate: PropTypes.func.isRequired,
     options: PropTypes.object.isRequired,
     optionsLoading: PropTypes.bool.isRequired,
     getAutoComplete: PropTypes.func.isRequired,
@@ -55,7 +56,14 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   }
 
   _handleChange = (value) => {
-    this.setState({ value })
+    this.setState({
+      value
+    })
+  }
+
+  _handleSelection = (description, { key: value }) => {
+    const { onUpdate } = this.props
+    onUpdate({ value, description })
   }
 
   render () {
@@ -67,12 +75,11 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
         size='large'
         mode='combobox'
         showArrow={false}
-        value={value}
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
         filterOption={false}
         onSearch={this._fetchUser}
-        onChange={this._handleChange}
+        onSelect={this._handleSelection}
         style={{ width: '100%' }}
       >
         {
