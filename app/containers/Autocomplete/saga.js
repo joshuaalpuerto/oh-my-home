@@ -4,7 +4,7 @@
 
 import { takeLatest } from 'redux-saga'
 import {
-  // call,
+  call,
   put,
   fork } from 'redux-saga/effects'
 import {
@@ -15,8 +15,7 @@ import {
   toUpper
 } from 'ramda'
 
-import SearchFixture from 'fixtures/search.json'
-// import request from 'utils/request'
+import request from 'utils/request'
 
 import {
   GET_AUTOCOMPLETE
@@ -27,12 +26,12 @@ import {
 } from './actions'
 
 export function * fetchAutocomplete (args) {
-  // const { payload } = args
-  const req = SearchFixture
+  const { payload } = args
 
-  // const req = yield call(request, `https://omh.sg/test/autocomplete?input=${encodeURIComponent(payload)}`, {
-  //   method: 'GET'
-  // })
+  const req = yield call(request, `http://qa.omh.sg/test/autocomplete?input=${encodeURIComponent(payload)}`, {
+    method: 'GET'
+  })
+
   const status = prop('status')
   const results = prop('predictions')
 
