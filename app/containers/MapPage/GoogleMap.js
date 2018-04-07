@@ -23,7 +23,8 @@ export class MapComponent extends React.PureComponent { // eslint-disable-line r
   static propTypes = {
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
-    images: PropTypes.array.isRequired
+    images: PropTypes.array.isRequired,
+    center: PropTypes.object.isRequired
   }
 
   state = {
