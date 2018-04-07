@@ -73,15 +73,15 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
   _updateStatePlace = (place) => {
     const lat = place.getIn(['result', 'geometry', 'location', 'lat'])
     const lng = place.getIn(['result', 'geometry', 'location', 'lng'])
-    const photoReferences = place.getIn(['result', 'photos'])
+    const photoReferences = place.getIn(['result', 'photos']) || []
     const images = photoReferences.map((photo) =>
       `${MAP_PHOTO_URL}=${photo.get('photo_reference')}&key=${MAP_KEY}`
-    ).toArray()
+    )
 
     this.setState({
+      images: images.size ? images.toArray() : images,
       lat,
-      lng,
-      images
+      lng
     })
   }
 
