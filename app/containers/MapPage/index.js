@@ -10,11 +10,11 @@ import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { FormattedMessage } from 'react-intl'
+// import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
-import { Layout } from 'antd';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+// import { Layout } from 'antd'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 import injectSaga from 'utils/injectSaga'
 import injectReducer from 'utils/injectReducer'
@@ -24,7 +24,7 @@ import SearchLocation from 'components/SearchLocation'
 
 import reducer from './reducer'
 import saga from './saga'
-import messages from './messages'
+// import messages from './messages'
 
 import {
   getPlaceAction
@@ -36,8 +36,6 @@ import {
 import {
   MAP_KEY
 } from './constants'
-
-const { Sider, Content } = Layout;
 
 const MapContainer = styled(Container)`
   position: relative;
@@ -54,7 +52,6 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
 ))
 
 export class MapPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
   state = {
     search: '',
     flatType: ''
@@ -76,7 +73,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
     getPlace({ placeId })
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this._handleRequestPlace(this.props)
   }
 
