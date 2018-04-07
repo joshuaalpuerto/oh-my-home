@@ -23,6 +23,7 @@ const selectPlaceLoading = () => createSelector(
 )
 
 export {
+  selectMapPageDomain,
   selectPlace,
   selectPlaceLoading
 }

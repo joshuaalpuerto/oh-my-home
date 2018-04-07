@@ -1,18 +1,33 @@
-
 import {
-  defaultAction
-} from '../actions'
-import {
-  DEFAULT_ACTION
+  GET_PLACE,
+  SET_PLACE
 } from '../constants'
 
-describe('MapPage actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION
+import {
+  getPlaceAction,
+  setPlaceAction
+} from '../actions'
+
+describe('MapPage Actions', () => {
+  describe('Get Place Actions', () => {
+    it('should call GET_USERS', () => {
+      const payload = {}
+      const expectedResult = {
+        type: GET_PLACE,
+        payload
       }
-      expect(defaultAction()).toEqual(expected)
+
+      expect(getPlaceAction(payload)).toEqual(expectedResult)
+    })
+
+    it('should call SET_USERS', () => {
+      const payload = { place: 1 }
+      const expectedResult = {
+        type: SET_PLACE,
+        payload
+      }
+
+      expect(setPlaceAction(payload)).toEqual(expectedResult)
     })
   })
 })

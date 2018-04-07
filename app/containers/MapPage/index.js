@@ -184,7 +184,7 @@ const mapStateToProps = createStructuredSelector({
   placeLoading: selectPlaceLoading()
 })
 
-function mapDispatchToProps (dispatch) {
+export function mapDispatchToProps (dispatch) {
   return {
     getPlace: (payload) => dispatch(getPlaceAction(payload)),
     changeRoute: (url) => dispatch(replace(url)),
