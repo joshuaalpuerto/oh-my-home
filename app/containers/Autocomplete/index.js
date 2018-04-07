@@ -67,6 +67,13 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
     onUpdate({ value, description })
   }
 
+  componentDidMount () {
+    const { defaultValue } = this.props
+    if (defaultValue) {
+      this.props.getAutoComplete(defaultValue)
+    }
+  }
+
   render () {
     const { options, optionsLoading, intl, defaultValue } = this.props
     return (
