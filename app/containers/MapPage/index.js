@@ -14,7 +14,6 @@ import { Helmet } from 'react-helmet'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 // import { Layout } from 'antd'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import {
   when
 } from 'ramda'
@@ -28,6 +27,7 @@ import SearchLocation from 'components/SearchLocation'
 import reducer from './reducer'
 import saga from './saga'
 // import messages from './messages'
+import GoogleMap from './GoogleMap'
 
 import {
   getPlaceAction
@@ -45,18 +45,6 @@ const MapContainer = styled(Container)`
   position: relative;
   height: 100%;
 `
-
-const MapComponent = withScriptjs(withGoogleMap(({ lat = 0, lng = 0, images }) => {
-  return (
-    <GoogleMap
-      defaultZoom={17}
-      defaultCenter={{ lat, lng }}
-    >
-      <Marker position={{ lat, lng }} />
-    </GoogleMap>
-  )
-}))
-
 export class MapPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     search: '',
@@ -127,7 +115,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
           onSearch={this._handleSearchUpdate}
         />
         {(lat && lng) &&
-        <MapComponent
+        <GoogleMap
           {...propMap}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${MAP_KEY}`}
           loadingElement={<div style={{ height: `100%` }} />}
