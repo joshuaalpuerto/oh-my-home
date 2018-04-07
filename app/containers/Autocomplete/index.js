@@ -47,7 +47,7 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   constructor (props) {
     super(props)
 
-    this._fetchUser = debounce(this._fetchUser, 800)
+    this._fetchUserDebounce = debounce(this._fetchUser, 800)
   }
 
   _fetchUser = (value) => {
@@ -89,7 +89,7 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
         filterOption={false}
-        onSearch={this._fetchUser}
+        onSearch={this._fetchUserDebounce}
         onSelect={this._handleSelection}
         style={{ width: '100%' }}
       >
