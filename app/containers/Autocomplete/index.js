@@ -83,7 +83,7 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
       >
         {
           options.map((option) => (
-            <Option key={option.get('id')} value={option.get('description')}>
+            <Option key={option.get('place_id')} value={option.get('description')}>
               {option.get('description')}
             </Option>
           ))
