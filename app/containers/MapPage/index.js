@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 // import { Layout } from 'antd'
+import { push } from 'react-router-redux'
 import {
   when
 } from 'ramda'
@@ -136,6 +137,7 @@ MapPage.propTypes = {
   place: PropTypes.object.isRequired,
   placeLoading: PropTypes.bool.isRequired,
   getPlace: PropTypes.func.isRequired,
+  changeRoute: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
@@ -147,6 +149,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps (dispatch) {
   return {
     getPlace: (payload) => dispatch(getPlaceAction(payload)),
+    changeRoute: (url) => dispatch(push(url)),
     dispatch
   }
 }
