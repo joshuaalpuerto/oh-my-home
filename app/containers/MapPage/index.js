@@ -48,6 +48,7 @@ const MapContainer = styled(Container)`
 `
 export class MapPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
+    placeId: '',
     search: '',
     flatType: '',
     lat: 0,
@@ -65,6 +66,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
 
     this.setState({
       search: q,
+      placeId,
       flatType
     })
 
@@ -100,7 +102,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
   }
 
   render () {
-    const { lat, lng, images, flatType, search } = this.state
+    const { lat, lng, images, flatType, search, placeId } = this.state
     const propMap = {
       lat,
       lng,
@@ -116,6 +118,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
           (flatType && search) &&
           <SearchLocation
             onSearch={this._handleSearchUpdate}
+            placeId={placeId}
             search={search}
             type={flatType}
           />

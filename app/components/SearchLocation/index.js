@@ -42,14 +42,25 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
     return (!flatType || isEmpty(location)) && (!search && !type)
   }
 
+  componentDidMount () {
+    const { type } = this.props
+
+    if (type) {
+      this.setState({
+        flatType: type
+      })
+    }
+  }
+
   render () {
-    const { intl, search, type } = this.props
+    const { intl, placeId, search, type } = this.props
     return (
       <Row gutter={16} type='flex' justify='center' align='middle'>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <Autocomplete
             onUpdate={this._handleUpdateKeyState('location')}
-            defaultValue={search}
+            defaultPlaceId={placeId}
+            defaultPlaceValue={search}
           />
         </Col>
         <Col xs={24} sm={24} md={4} lg={4} xl={4}>
@@ -79,6 +90,7 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
 
 SearchLocation.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  placeId: PropTypes.string,
   search: PropTypes.string,
   type: PropTypes.string,
   intl: intlShape.isRequired

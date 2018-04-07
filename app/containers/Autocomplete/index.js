@@ -68,21 +68,24 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   }
 
   componentDidMount () {
-    const { defaultValue } = this.props
-    if (defaultValue) {
-      this.props.getAutoComplete(defaultValue)
+    const { defaultPlaceValue, defaultPlaceId } = this.props
+    if (defaultPlaceValue) {
+      this.props.getAutoComplete(defaultPlaceValue)
+      this._handleSelection(defaultPlaceValue, {
+        key: defaultPlaceId
+      })
     }
   }
 
   render () {
-    const { options, optionsLoading, intl, defaultValue } = this.props
+    const { options, optionsLoading, intl, defaultPlaceValue } = this.props
     return (
       <Select
         allowClear
         size='large'
         mode='combobox'
         showArrow={false}
-        defaultValue={defaultValue}
+        defaultValue={defaultPlaceValue}
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
         filterOption={false}
