@@ -62,7 +62,7 @@ export class SearchPage extends React.PureComponent { // eslint-disable-line rea
   }
 
   _handleSearchUpdate = ({ flatType, location: { value, description } }) => {
-    this.props.changeRoute(`/maps?place_id=${value}&flatType=${flatType}&q=${encodeURIComponent(description)}`)
+    this.props.changeRoute(`/map-page?place_id=${value}&flatType=${flatType}&q=${encodeURIComponent(description)}`)
   }
 
   render () {
