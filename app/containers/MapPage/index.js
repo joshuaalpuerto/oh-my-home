@@ -15,6 +15,9 @@ import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 // import { Layout } from 'antd'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import {
+  when
+} from 'ramda'
 
 import injectSaga from 'utils/injectSaga'
 import injectReducer from 'utils/injectReducer'
@@ -34,7 +37,8 @@ import {
   selectPlaceLoading
 } from './selectors'
 import {
-  MAP_KEY
+  MAP_KEY,
+  MAP_PHOTO_URL
 } from './constants'
 
 const MapContainer = styled(Container)`
@@ -42,19 +46,24 @@ const MapContainer = styled(Container)`
   height: 100%;
 `
 
-const MapComponent = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
-  >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
-  </GoogleMap>
-))
+const MapComponent = withScriptjs(withGoogleMap(({ lat = 0, lng = 0, images }) => {
+  return (
+    <GoogleMap
+      defaultZoom={17}
+      defaultCenter={{ lat, lng }}
+    >
+      <Marker position={{ lat, lng }} />
+    </GoogleMap>
+  )
+}))
 
 export class MapPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     search: '',
-    flatType: ''
+    flatType: '',
+    lat: 0,
+    lng: 0,
+    images: []
   }
 
   _handleSearchUpdate = ({ flatType, location: { value, description } }) => {
@@ -73,11 +82,41 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
     getPlace({ placeId })
   }
 
+  _updateStatePlace = (place) => {
+    const lat = place.getIn(['result', 'geometry', 'location', 'lat'])
+    const lng = place.getIn(['result', 'geometry', 'location', 'lng'])
+    const photoReferences = place.getIn(['result', 'photos'])
+    const images = photoReferences.map((photo) =>
+      `${MAP_PHOTO_URL}=${photo.get('photo_reference')}&key=${MAP_KEY}`
+    ).toArray()
+
+    this.setState({
+      lat,
+      lng,
+      images
+    })
+  }
+
   componentDidMount () {
     this._handleRequestPlace(this.props)
   }
 
+  componentWillReceiveProps (nextProps) {
+    const shouldUpdateJobPositions = when(
+      (place) => this.props.place !== place, // also if state is empty we try to populate it with the current store data
+      this._updateStatePlace
+    )
+
+    shouldUpdateJobPositions(nextProps.place)
+  }
+
   render () {
+    const { lat, lng, images } = this.state
+    const propMap = {
+      lat,
+      lng,
+      images
+    }
     return (
       <MapContainer>
         <Helmet>
@@ -87,13 +126,14 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
         <SearchLocation
           onSearch={this._handleSearchUpdate}
         />
+        {(lat && lng) &&
         <MapComponent
-          isMarkerShown
+          {...propMap}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${MAP_KEY}`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `80vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
-        />
+        />}
       </MapContainer>
     )
   }
