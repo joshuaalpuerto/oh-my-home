@@ -116,7 +116,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
           <SearchLocation
             onSearch={this._handleSearchUpdate}
             search={search}
-            flatType={flatType}
+            type={flatType}
           />
         }
         {(lat && lng) &&

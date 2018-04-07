@@ -36,12 +36,14 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
   }
 
   _shouldBeDisabled = () => {
+    const { search, type } = this.props
     const { flatType, location } = this.state
-    return !flatType || isEmpty(location)
+
+    return (!flatType || isEmpty(location)) && (!search && !type)
   }
 
   render () {
-    const { intl, search, flatType } = this.props
+    const { intl, search, type } = this.props
     return (
       <Row gutter={16} type='flex' justify='center' align='middle'>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
@@ -53,7 +55,7 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
         <Col xs={24} sm={24} md={4} lg={4} xl={4}>
           <Select
             size='large'
-            defaultValue={flatType}
+            defaultValue={type}
             placeholder={intl.formatMessage(messages.flatTypePlaceholder)}
             style={{ width: '100%' }}
             onChange={this._handleUpdateKeyState('flatType')}
@@ -78,7 +80,7 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
 SearchLocation.propTypes = {
   onSearch: PropTypes.func.isRequired,
   search: PropTypes.string,
-  flatType: PropTypes.string,
+  type: PropTypes.string,
   intl: intlShape.isRequired
 }
 
