@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 // import { Layout } from 'antd'
-import { push } from 'react-router-redux'
+import { replace } from 'react-router-redux'
 import {
   complement,
   compose as RCompose,
@@ -187,7 +187,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps (dispatch) {
   return {
     getPlace: (payload) => dispatch(getPlaceAction(payload)),
-    changeRoute: (url) => dispatch(push(url)),
+    changeRoute: (url) => dispatch(replace(url)),
     dispatch
   }
 }
