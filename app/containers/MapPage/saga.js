@@ -12,8 +12,8 @@ import {
 import request from 'utils/request'
 
 export function * fetchPlace (args) {
-  const { payload: id } = args
-  const req = yield call(request, `http://qa.omh.sg/test/places?place_id${id}`, {
+  const { payload: { placeId } } = args
+  const req = yield call(request, `http://qa.omh.sg/test/places?place_id=${placeId}`, {
     method: 'GET'
   })
 
