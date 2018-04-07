@@ -16,6 +16,10 @@ import { compose } from 'redux'
 // import { Layout } from 'antd'
 import { push } from 'react-router-redux'
 import {
+  complement,
+  compose as RCompose,
+  equals,
+  path,
   when
 } from 'ramda'
 
@@ -93,12 +97,23 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
   }
 
   componentWillReceiveProps (nextProps) {
-    const shouldUpdateJobPositions = when(
+    const { location: { search } } = this.props
+
+    const shouldUpdatePlaceState = when(
       (place) => this.props.place !== place, // also if state is empty we try to populate it with the current store data
       this._updateStatePlace
     )
 
-    shouldUpdateJobPositions(nextProps.place)
+    const shouldUpdateMapDetails = when(
+      RCompose(
+        complement(equals(search)),
+        path(['location', 'search'])
+      ),
+      this._handleRequestPlace
+    )
+
+    shouldUpdateMapDetails(nextProps)
+    shouldUpdatePlaceState(nextProps.place)
   }
 
   render () {
@@ -130,6 +145,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `80vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          center={{lat, lng}}
         />}
       </MapContainer>
     )

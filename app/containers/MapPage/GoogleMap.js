@@ -38,11 +38,11 @@ export class MapComponent extends React.PureComponent { // eslint-disable-line r
 
   render () {
     const { open } = this.state
-    const { lat, lng, images } = this.props
+    const { lat, lng, images, center } = this.props
     return (
       <GoogleMap
         defaultZoom={17}
-        defaultCenter={{ lat, lng }}
+        center={center}
       >
         <Marker
           position={{ lat, lng }}
