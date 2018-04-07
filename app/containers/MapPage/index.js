@@ -99,7 +99,7 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
   }
 
   render () {
-    const { lat, lng, images } = this.state
+    const { lat, lng, images, flatType, search } = this.state
     const propMap = {
       lat,
       lng,
@@ -111,9 +111,14 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
           <title>MapPage</title>
           <meta name='description' content='Description of MapPage' />
         </Helmet>
-        <SearchLocation
-          onSearch={this._handleSearchUpdate}
-        />
+        {
+          (flatType && search) &&
+          <SearchLocation
+            onSearch={this._handleSearchUpdate}
+            search={search}
+            flatType={flatType}
+          />
+        }
         {(lat && lng) &&
         <GoogleMap
           {...propMap}

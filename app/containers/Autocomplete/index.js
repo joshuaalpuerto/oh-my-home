@@ -32,6 +32,7 @@ const Option = Select.Option
 
 export class Autocomplete extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
+    defaultValue: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
     options: PropTypes.object.isRequired,
     optionsLoading: PropTypes.bool.isRequired,
@@ -67,13 +68,14 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   }
 
   render () {
-    const { options, optionsLoading, intl } = this.props
+    const { options, optionsLoading, intl, defaultValue } = this.props
     return (
       <Select
         allowClear
         size='large'
         mode='combobox'
         showArrow={false}
+        defaultValue={defaultValue}
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
         filterOption={false}
