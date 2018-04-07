@@ -14,10 +14,18 @@ import { compose } from 'redux'
 
 import injectSaga from 'utils/injectSaga'
 import injectReducer from 'utils/injectReducer'
-import makeSelectMapPage from './selectors'
+
 import reducer from './reducer'
 import saga from './saga'
 import messages from './messages'
+
+import {
+  getPlaceAction
+} from './actions'
+import {
+  selectPlace,
+  selectPlaceLoading
+} from './selectors'
 
 export class MapPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
@@ -34,15 +42,19 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
 }
 
 MapPage.propTypes = {
+  place: PropTypes.object.isRequired,
+  placeLoading: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createStructuredSelector({
-  mappage: makeSelectMapPage()
+  place: selectPlace(),
+  placeLoading: selectPlaceLoading()
 })
 
 function mapDispatchToProps (dispatch) {
   return {
+    getPlace: (payload) => dispatch(getPlaceAction(payload)),
     dispatch
   }
 }

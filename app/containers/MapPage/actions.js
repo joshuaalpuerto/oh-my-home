@@ -5,11 +5,20 @@
  */
 
 import {
-  DEFAULT_ACTION
+  GET_PLACE,
+  SET_PLACE
 } from './constants'
 
-export function defaultAction () {
+export function getPlaceAction (payload) {
   return {
-    type: DEFAULT_ACTION
+    type: GET_PLACE,
+    payload
+  }
+}
+
+export function setPlaceAction (payload) {
+  return {
+    type: SET_PLACE,
+    payload
   }
 }

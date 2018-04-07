@@ -13,12 +13,16 @@ const selectMapPageDomain = (state) => state.get('mapPage')
  * Default selector used by MapPage
  */
 
-const makeSelectMapPage = () => createSelector(
+const selectPlace = () => createSelector(
   selectMapPageDomain,
-  (substate) => substate.toJS()
+  (substate) => substate.get('place')
+)
+const selectPlaceLoading = () => createSelector(
+  selectMapPageDomain,
+  (substate) => substate.get('placeLoading')
 )
 
-export default makeSelectMapPage
 export {
-  selectMapPageDomain
+  selectPlace,
+  selectPlaceLoading
 }
