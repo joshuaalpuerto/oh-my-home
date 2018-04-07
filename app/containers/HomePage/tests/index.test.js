@@ -41,6 +41,19 @@ describe('<HomePage />', () => {
     ).toBeCalled()
   })
 
+  it('should call changeRoute to search page', () => {
+    const props = {
+      ...minProps,
+      changeRoute: jest.fn()
+    }
+    const renderComponent = wrapper(props)
+    const component = renderComponent.instance()
+    component._handleSearchRoute()
+    expect(
+      component.props.changeRoute
+    ).toBeCalled()
+  })
+
   describe('mapDispatchToProps', () => {
     describe('changeRoute', () => {
       it('should be injected', () => {
