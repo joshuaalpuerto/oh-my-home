@@ -16,6 +16,7 @@ const ImageContainer = styled.div`
   > img {
     flex: 1;
     margin: 10px;
+    width: 200px;
   }
 `
 export class MapComponent extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

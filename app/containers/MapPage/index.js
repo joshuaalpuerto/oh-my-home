@@ -92,6 +92,47 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
     })
   }
 
+  _showSearchLocation = () => {
+    const { flatType, search, placeId } = this.state
+
+    if (flatType && search) {
+      return (
+        <SearchLocation
+          onSearch={this._handleSearchUpdate}
+          placeId={placeId}
+          search={search}
+          type={flatType}
+        />
+      )
+    }
+
+    return null
+  }
+
+  _showMap = () => {
+    const { lat, lng, images } = this.state
+    const propMap = {
+      lat,
+      lng,
+      images
+    }
+
+    if (lat && lng) {
+      return (
+        <GoogleMap
+          {...propMap}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${MAP_KEY}`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `80vh` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          center={{lat, lng}}
+        />
+      )
+    }
+
+    return null
+  }
+
   componentDidMount () {
     this._handleRequestPlace(this.props)
   }
@@ -117,36 +158,14 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
   }
 
   render () {
-    const { lat, lng, images, flatType, search, placeId } = this.state
-    const propMap = {
-      lat,
-      lng,
-      images
-    }
     return (
       <MapContainer>
         <Helmet>
           <title>MapPage</title>
           <meta name='description' content='Description of MapPage' />
         </Helmet>
-        {
-          (flatType && search) &&
-          <SearchLocation
-            onSearch={this._handleSearchUpdate}
-            placeId={placeId}
-            search={search}
-            type={flatType}
-          />
-        }
-        {(lat && lng) &&
-        <GoogleMap
-          {...propMap}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${MAP_KEY}`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `80vh` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          center={{lat, lng}}
-        />}
+        { this._showSearchLocation() }
+        { this._showMap() }
       </MapContainer>
     )
   }
