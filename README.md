@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/joshuaalpuerto/oh-my-home/badge.svg?branch=master)](https://coveralls.io/github/joshuaalpuerto/oh-my-home?branch=master)
 
 #### Demo:
-[https://oh-my-home.netlify.com/](https://oh-my-home.netlify.com/)
+[http://oh-my-home.netlify.com/](http://oh-my-home.netlify.com/)
 
 ## Development Environment Setup
 
