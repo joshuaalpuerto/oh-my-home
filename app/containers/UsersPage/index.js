@@ -100,8 +100,14 @@ export class UsersPage extends React.PureComponent { // eslint-disable-line reac
     })(this.props.users)(filter)
   }
 
+  _handleToggleUser = (id) => () => {
+    const { toggleStatusUser } = this.props
+
+    toggleStatusUser({ id })
+  }
+
   render () {
-    const { usersLoading, getUsers, toggleStatusUser } = this.props
+    const { usersLoading, getUsers } = this.props
     const { filter, modal, selectedUser } = this.state
     const data = this._dataHandler(filter)
     return (
@@ -150,7 +156,7 @@ export class UsersPage extends React.PureComponent { // eslint-disable-line reac
                   } </TDCenter>
                   <TDCenter>
                     <ButtonOptionWrapper>
-                      <Button handleRoute={() => toggleStatusUser({ id: user.get('id') })} >
+                      <Button handleRoute={this._handleToggleUser(user.get('id'))} >
                         {
                         user.get('deleted')
                           ? <FormattedMessage {...messages.redoButton} />
