@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GoogleMap /> Testing Without DOM should match snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <GoogleMap
+    center={
+        Object {
+            "lat": 1.123,
+            "lng": 1.123,
+          }
+    }
+    defaultZoom={17}
+>
+    <Marker
+        onClick={[Function]}
+        position={
+            Object {
+                "lat": 1.123,
+                "lng": 2.123,
+              }
+        }
+    />
+</GoogleMap>,
+  "nodes": Array [
+    <GoogleMap
+      center={
+            Object {
+                  "lat": 1.123,
+                  "lng": 1.123,
+                }
+      }
+      defaultZoom={17}
+>
+      <Marker
+            onClick={[Function]}
+            position={
+                  Object {
+                        "lat": 1.123,
+                        "lng": 2.123,
+                      }
+            }
+      />
+</GoogleMap>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <MapComponent
+        center={
+                Object {
+                        "lat": 1.123,
+                        "lng": 1.123,
+                      }
+        }
+        containerElement={
+                <div
+                        style={
+                                Object {
+                                        "height": "80vh",
+                                      }
+                        }
+                />
+        }
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag"
+        images={
+                Array [
+                        "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag",
+                      ]
+        }
+        lat={1.123}
+        lng={2.123}
+        loadingElement={
+                <div
+                        style={
+                                Object {
+                                        "height": "100%",
+                                      }
+                        }
+                />
+        }
+        mapElement={
+                <div
+                        style={
+                                Object {
+                                        "height": "100%",
+                                      }
+                        }
+                />
+        }
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": MapComponent {
+        "_infoToggle": [Function],
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "center": Object {
+            "lat": 1.123,
+            "lng": 1.123,
+          },
+          "containerElement": <div
+            style={
+                        Object {
+                                    "height": "80vh",
+                                  }
+            }
+/>,
+          "googleMapURL": "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag",
+          "images": Array [
+            "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag",
+          ],
+          "lat": 1.123,
+          "lng": 2.123,
+          "loadingElement": <div
+            style={
+                        Object {
+                                    "height": "100%",
+                                  }
+            }
+/>,
+          "mapElement": <div
+            style={
+                        Object {
+                                    "height": "100%",
+                                  }
+            }
+/>,
+        },
+        "refs": Object {},
+        "state": Object {
+          "open": true,
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <GoogleMap
+          center={
+                    Object {
+                              "lat": 1.123,
+                              "lng": 1.123,
+                            }
+          }
+          defaultZoom={17}
+>
+          <Marker
+                    onClick={[Function]}
+                    position={
+                              Object {
+                                        "lat": 1.123,
+                                        "lng": 2.123,
+                                      }
+                    }
+          >
+                    <InfoWindow
+                              onCloseClick={[Function]}
+                    >
+                              <GoogleMap__ImageContainer>
+                                        <Img
+                                                  alt="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag"
+                                                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag"
+                                        />
+                              </GoogleMap__ImageContainer>
+                    </InfoWindow>
+          </Marker>
+</GoogleMap>,
+        "_debugID": 2,
+        "_renderedOutput": <GoogleMap
+          center={
+                    Object {
+                              "lat": 1.123,
+                              "lng": 1.123,
+                            }
+          }
+          defaultZoom={17}
+>
+          <Marker
+                    onClick={[Function]}
+                    position={
+                              Object {
+                                        "lat": 1.123,
+                                        "lng": 2.123,
+                                      }
+                    }
+          >
+                    <InfoWindow
+                              onCloseClick={[Function]}
+                    >
+                              <GoogleMap__ImageContainer>
+                                        <Img
+                                                  alt="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag"
+                                                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag"
+                                        />
+                              </GoogleMap__ImageContainer>
+                    </InfoWindow>
+          </Marker>
+</GoogleMap>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <MapComponent
+    center={
+        Object {
+            "lat": 1.123,
+            "lng": 1.123,
+          }
+    }
+    containerElement={
+        <div
+            style={
+                Object {
+                    "height": "80vh",
+                  }
+            }
+        />
+    }
+    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag"
+    images={
+        Array [
+            "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=1234567&key=AIzaSyDDs-19AX317p7-U-ZNGv19NQtC1JO29Ag",
+          ]
+    }
+    lat={1.123}
+    lng={2.123}
+    loadingElement={
+        <div
+            style={
+                Object {
+                    "height": "100%",
+                  }
+            }
+        />
+    }
+    mapElement={
+        <div
+            style={
+                Object {
+                    "height": "100%",
+                  }
+            }
+        />
+    }
+/>,
+}
+`;
