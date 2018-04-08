@@ -63,7 +63,7 @@ export function * updateRecentSearched (args) {
   const cleanSearches = compose(
     slice(0, NUMBER_VIEW_ITEMS),
     reverse,
-    uniqBy(prop('place_id')),
+    uniqBy(prop('value')),
     compact
   )
 
@@ -72,6 +72,7 @@ export function * updateRecentSearched (args) {
   recentSearched = recentSearched.concat(payload)
 
   yield call(setItem, RECENT_SEARCH, cleanSearches(recentSearched))
+  yield * fetchRecentSearched()
 }
 
 export function * fetchRecentSearched () {
