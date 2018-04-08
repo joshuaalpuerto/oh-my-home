@@ -1,5 +1,5 @@
 /*
- * HomeReducer
+ * UsersPageReducer
  */
 import { fromJS } from 'immutable'
 
@@ -15,7 +15,7 @@ const initialState = fromJS({
   usersLoading: false
 })
 
-function homeReducer (state = initialState, action) {
+function usersPageReducer (state = initialState, action) {
   switch (action.type) {
     case GET_USERS:
       return state
@@ -46,4 +46,4 @@ function homeReducer (state = initialState, action) {
   }
 }
 
-export default homeReducer
+export default usersPageReducer

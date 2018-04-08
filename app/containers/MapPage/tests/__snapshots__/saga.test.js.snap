@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 1`] = `
+exports[`MapPage Saga fetchPlaceSagas fetchPlace should match the snapshot for setting token 1`] = `
 Object {
   "@@redux-saga/HELPER": true,
-  "name": "takeLatest(boilerplate/Home/GET_USERS, fetchUsers)",
+  "name": "takeLatest(app/MapPage/GET_PLACE, fetchPlace)",
   "next": [Function],
   "return": [Function],
   "throw": [Function],
@@ -11,12 +11,12 @@ Object {
 }
 `;
 
-exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 2`] = `
+exports[`MapPage Saga fetchPlaceSagas fetchPlace should match the snapshot for setting token 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
     "args": Array [
-      "https://randomuser.me/api/?results=5",
+      "http://qa.omh.sg/test/places?place_id=1",
       Object {
         "method": "GET",
       },
@@ -27,10 +27,10 @@ Object {
 }
 `;
 
-exports[`HomePage Saga fetchUsersSagas fetchUsers should set setUsersAction 1`] = `
+exports[`MapPage Saga fetchPlaceSagas fetchPlace should set setPlaceAction 1`] = `
 Object {
   "@@redux-saga/HELPER": true,
-  "name": "takeLatest(boilerplate/Home/GET_USERS, fetchUsers)",
+  "name": "takeLatest(app/MapPage/GET_PLACE, fetchPlace)",
   "next": [Function],
   "return": [Function],
   "throw": [Function],

@@ -1,7 +1,7 @@
 
 import { put } from 'redux-saga/effects'
 
-import homePageSagas, {
+import usersPageSagas, {
   fetchUsersSagas,
   fetchUsers
 } from '../saga'
@@ -49,10 +49,10 @@ describe('HomePage Saga', () => {
   })
 
   describe('defaultGenerators', () => {
-    const homeGenerator = homePageSagas()
+    const usersGenerator = usersPageSagas()
 
     it('should have 1 functions', () => {
-      const watchers = homeGenerator.next().value
+      const watchers = usersGenerator.next().value
       expect(watchers.length).toEqual(1)
     })
   })

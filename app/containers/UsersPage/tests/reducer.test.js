@@ -1,13 +1,13 @@
 import { fromJS } from 'immutable'
 
-import homeReducer from '../reducer'
+import usersPageReducer from '../reducer'
 import {
   getUsersActions,
   setUsersActions,
   toggleStatusUserActions
 } from '../actions'
 
-describe('homeReducer', () => {
+describe('usersPageReducer', () => {
   let state
   beforeEach(() => {
     state = fromJS({
@@ -18,14 +18,14 @@ describe('homeReducer', () => {
 
   it('should return the initial state', () => {
     const expectedResult = state
-    expect(homeReducer(undefined, {})).toEqual(expectedResult)
+    expect(usersPageReducer(undefined, {})).toEqual(expectedResult)
   })
 
   it('should set usersLoading on getUser', () => {
     const expectedResult = state
       .set('usersLoading', true)
 
-    expect(homeReducer(state, getUsersActions())).toEqual(expectedResult)
+    expect(usersPageReducer(state, getUsersActions())).toEqual(expectedResult)
   })
 
   it('should set uses on setUser', () => {
@@ -34,7 +34,7 @@ describe('homeReducer', () => {
       .set('usersLoading', false)
       .set('users', fromJS(payload))
 
-    expect(homeReducer(state, setUsersActions(payload))).toEqual(expectedResult)
+    expect(usersPageReducer(state, setUsersActions(payload))).toEqual(expectedResult)
   })
 
   it('should set user toggle', () => {
@@ -49,6 +49,6 @@ describe('homeReducer', () => {
 
     const expectedResult = currentState.setIn(['users', findIndex, 'deleted'], true)
 
-    expect(homeReducer(currentState, toggleStatusUserActions(payload))).toEqual(expectedResult)
+    expect(usersPageReducer(currentState, toggleStatusUserActions(payload))).toEqual(expectedResult)
   })
 })

@@ -1,4 +1,10 @@
 import styled from 'styled-components'
+import Container from 'components/Container'
+
+export const UserContainer = styled(Container)`
+  margin-top: 100px;
+  border-bottom: 1px solid #CCC;
+`
 
 export const TableHeaderName = styled.th`
   width: 50%;

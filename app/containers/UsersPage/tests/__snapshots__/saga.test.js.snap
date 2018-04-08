@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(boilerplate/UsersPage/GET_USERS, fetchUsers)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`HomePage Saga fetchUsersSagas fetchUsers should match the snapshot for setting token 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "https://randomuser.me/api/?results=5",
+      Object {
+        "method": "GET",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`HomePage Saga fetchUsersSagas fetchUsers should set setUsersAction 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(boilerplate/UsersPage/GET_USERS, fetchUsers)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;

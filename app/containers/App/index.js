@@ -7,37 +7,47 @@
  */
 
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import { Switch, Route } from 'react-router-dom'
+import { Layout } from 'antd'
 
 import HomePage from 'containers/HomePage/Loadable'
+import SearchPage from 'containers/SearchPage/Loadable'
+import MapPage from 'containers/MapPage/Loadable'
+import UsersPage from 'containers/UsersPage/Loadable'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Footer from 'components/Footer'
 
+const { Content } = Layout
+
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
   flex-direction: column;
 `
 
 export default function App () {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate='%s - Oh My Home'
-        defaultTitle='Oh My Home'
-      >
-        <meta name='description' content='A Oh My Home application' />
-      </Helmet>
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='' component={NotFoundPage} />
-      </Switch>
-      <Footer />
+      <Layout>
+        <Helmet
+          titleTemplate='%s - Oh My Home'
+          defaultTitle='Oh My Home'
+        >
+          <meta name='description' content='A Oh My Home application' />
+        </Helmet>
+        <Content>
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/search' component={SearchPage} />
+            <Route exact path='/map-page' component={MapPage} />
+            <Route exact path='/users' component={UsersPage} />
+            <Route path='' component={NotFoundPage} />
+          </Switch>
+        </Content>
+        <Footer />
+      </Layout>
     </AppWrapper>
   )
 }
