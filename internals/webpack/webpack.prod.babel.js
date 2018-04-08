@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
+const BrotliPlugin = require('brotli-webpack-plugin')
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
@@ -14,6 +15,10 @@ module.exports = require('./webpack.base.babel')({
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js'
+  },
+
+  babelQuery: {
+    plugins: ['lodash', 'ramda', ['import', { 'libraryName': 'antd', 'libraryDirectory': 'es', 'style': 'css' }]]
   },
 
   plugins: [
@@ -66,6 +71,13 @@ module.exports = require('./webpack.base.babel')({
       safeToUseOptionalCaches: true,
 
       AppCache: false
+    }),
+
+    new BrotliPlugin({
+      asset: '[path].br[query]',
+      test: /\.js$|\.css$|\.html$|\.png$|\.jpg$|\.jpeg$|\.svg$|\.ico$|\.gif$|\.ttf$|\.woff$|\.woff2$|\.eot$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ],
 
