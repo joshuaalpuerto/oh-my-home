@@ -23,6 +23,21 @@
   "boilerplate.containers.UsersPage.deleteButton": "Delete",
   "boilerplate.containers.UsersPage.redoButton": "Redo",
 
+  "app.containers.HomePage.pageTitle": "Oh My Home Implementations",
+  "app.containers.HomePage.buttonSearchLocation": "Search Location",
+  "app.containers.HomePage.buttonUserGenerator": "Users Generator",
+
+  "app.containers.Autocomplete.searchPlaceholder": "Search Location...",
+  "app.containers.Autocomplete.results": "Results",
+  "app.containers.Autocomplete.recentSearches": "Recent Searches",
+
+  "app.containers.SearchPage.pageTitle": "Find where you want to stay.",
+  "app.containers.SearchPage.flatTypePlaceholder": "Flat Type",
+  "app.containers.SearchPage.buttonSearch": "Search",
+
+  "app.components.SearchLocation.flatTypePlaceholder": "Flat Type",
+  "app.components.SearchLocation.buttonSearch": "Search",
+
   "app.components.Modal.closeButton": "Close",
 
   "boilerplate.components.TableData.emptyState": "No users",

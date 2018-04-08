@@ -7,11 +7,11 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   flatTypePlaceholder: {
-    id: 'app.containers.SearchPage.flatTypePlaceholder',
+    id: 'app.components.SearchLocation.flatTypePlaceholder',
     defaultMessage: 'Flat Type'
   },
   buttonSearch: {
-    id: 'app.containers.SearchPage.buttonSearch',
+    id: 'app.components.SearchLocation.buttonSearch',
     defaultMessage: 'Search'
   }
 })
