@@ -36,24 +36,41 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
   }
 
   _shouldBeDisabled = () => {
+    const { search, type } = this.props
     const { flatType, location } = this.state
-    return !flatType || isEmpty(location)
+
+    return (!flatType || isEmpty(location)) && (!search && !type)
+  }
+
+  componentDidMount () {
+    const { type } = this.props
+
+    if (type) {
+      this.setState({
+        flatType: type
+      })
+    }
   }
 
   render () {
-    const { intl } = this.props
+    const { intl, placeId, search, type } = this.props
     return (
       <Row gutter={16} type='flex' justify='center' align='middle'>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <Autocomplete onUpdate={this._handleUpdateKeyState('location')} />
+          <Autocomplete
+            onUpdate={this._handleUpdateKeyState('location')}
+            defaultPlaceId={placeId}
+            defaultPlaceValue={search}
+          />
         </Col>
         <Col xs={24} sm={24} md={4} lg={4} xl={4}>
           <Select
             size='large'
+            defaultValue={type}
             placeholder={intl.formatMessage(messages.flatTypePlaceholder)}
             style={{ width: '100%' }}
             onChange={this._handleUpdateKeyState('flatType')}
-            >
+          >
             <Option value='room2'>2 Rooms</Option>
             <Option value='room3'>3 Rooms</Option>
             <Option value='room4' >4 Rooms</Option>
@@ -73,6 +90,9 @@ export class SearchLocation extends React.PureComponent { // eslint-disable-line
 
 SearchLocation.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  placeId: PropTypes.string,
+  search: PropTypes.string,
+  type: PropTypes.string,
   intl: intlShape.isRequired
 }
 

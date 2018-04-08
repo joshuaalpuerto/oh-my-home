@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapPage Saga fetchPlaceSagas fetchPlace should match the snapshot for setting token 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/MapPage/GET_PLACE, fetchPlace)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`MapPage Saga fetchPlaceSagas fetchPlace should match the snapshot for setting token 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "http://qa.omh.sg/test/places?place_id=1",
+      Object {
+        "method": "GET",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`MapPage Saga fetchPlaceSagas fetchPlace should set setPlaceAction 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/MapPage/GET_PLACE, fetchPlace)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;

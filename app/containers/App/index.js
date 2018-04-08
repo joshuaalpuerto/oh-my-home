@@ -14,6 +14,7 @@ import { Layout } from 'antd'
 
 import HomePage from 'containers/HomePage/Loadable'
 import SearchPage from 'containers/SearchPage/Loadable'
+import MapPage from 'containers/MapPage/Loadable'
 import UsersPage from 'containers/UsersPage/Loadable'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Footer from 'components/Footer'
@@ -40,6 +41,7 @@ export default function App () {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/search' component={SearchPage} />
+            <Route exact path='/map-page' component={MapPage} />
             <Route exact path='/users' component={UsersPage} />
             <Route path='' component={NotFoundPage} />
           </Switch>

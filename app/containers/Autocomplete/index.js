@@ -32,6 +32,7 @@ const Option = Select.Option
 
 export class Autocomplete extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
+    defaultValue: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
     options: PropTypes.object.isRequired,
     optionsLoading: PropTypes.bool.isRequired,
@@ -46,7 +47,7 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   constructor (props) {
     super(props)
 
-    this._fetchUser = debounce(this._fetchUser, 800)
+    this._fetchUserDebounce = debounce(this._fetchUser, 800)
   }
 
   _fetchUser = (value) => {
@@ -66,24 +67,35 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
     onUpdate({ value, description })
   }
 
+  componentDidMount () {
+    const { defaultPlaceValue, defaultPlaceId } = this.props
+    if (defaultPlaceValue) {
+      this.props.getAutoComplete(defaultPlaceValue)
+      this._handleSelection(defaultPlaceValue, {
+        key: defaultPlaceId
+      })
+    }
+  }
+
   render () {
-    const { options, optionsLoading, intl } = this.props
+    const { options, optionsLoading, intl, defaultPlaceValue } = this.props
     return (
       <Select
         allowClear
         size='large'
         mode='combobox'
         showArrow={false}
+        defaultValue={defaultPlaceValue}
         placeholder={intl.formatMessage(messages.searchPlaceholder)}
         notFoundContent={optionsLoading ? <Spin size='small' /> : null}
         filterOption={false}
-        onSearch={this._fetchUser}
+        onSearch={this._fetchUserDebounce}
         onSelect={this._handleSelection}
         style={{ width: '100%' }}
       >
         {
           options.map((option) => (
-            <Option key={option.get('id')} value={option.get('description')}>
+            <Option key={option.get('place_id')} value={option.get('description')}>
               {option.get('description')}
             </Option>
           ))

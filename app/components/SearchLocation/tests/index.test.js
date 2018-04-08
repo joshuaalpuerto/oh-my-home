@@ -86,4 +86,28 @@ describe('<SearchLocation />', () => {
       component._shouldBeDisabled()
     ).toEqual(false)
   })
+
+  describe('componentDidMount', () => {
+    it('should have empty flatType if type is not define', () => {
+      const renderComponent = wrapper(minProps)
+      const component = renderComponent.instance()
+      component.componentDidMount()
+      expect(
+        component.state.flatType
+      ).toEqual('')
+    })
+
+    it('should have set flatType if type is define', () => {
+      const props = {
+        ...minProps,
+        type: 'room2'
+      }
+      const renderComponent = wrapper(props)
+      const component = renderComponent.instance()
+      component.componentDidMount()
+      expect(
+        component.state.flatType
+      ).toEqual('room2')
+    })
+  })
 })
