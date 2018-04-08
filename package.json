@@ -227,6 +227,7 @@
     "intl": "1.2.5",
     "invariant": "2.2.2",
     "ip": "1.1.5",
+    "localforage": "1.7.1",
     "lodash": "4.17.4",
     "minimist": "1.2.0",
     "prop-types": "15.5.10",
