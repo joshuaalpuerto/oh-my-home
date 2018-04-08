@@ -3,7 +3,8 @@ import { fromJS } from 'immutable'
 import autocompleteReducer from '../reducer'
 import {
   getAutoCompleteAction,
-  setAutoCompleteAction
+  setAutoCompleteAction,
+  setRecentSearchAction
 } from '../actions'
 
 describe('autocompleteReducer', () => {
@@ -11,7 +12,9 @@ describe('autocompleteReducer', () => {
   beforeEach(() => {
     state = fromJS({
       options: [],
-      optionsLoading: false
+      optionsLoading: false,
+
+      recentSearches: []
     })
   })
 
@@ -34,5 +37,13 @@ describe('autocompleteReducer', () => {
       .set('options', fromJS(payload))
 
     expect(autocompleteReducer(state, setAutoCompleteAction(payload))).toEqual(expectedResult)
+  })
+
+  it('should set recentSearches on setRecentSearchAction', () => {
+    const payload = [{ user: 1 }]
+    const expectedResult = state
+      .set('recentSearches', fromJS(payload))
+
+    expect(autocompleteReducer(state, setRecentSearchAction(payload))).toEqual(expectedResult)
   })
 })

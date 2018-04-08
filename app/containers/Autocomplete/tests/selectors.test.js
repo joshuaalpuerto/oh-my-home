@@ -3,7 +3,8 @@ import { fromJS } from 'immutable'
 import {
   selectAutocompleteDomain,
   selectOptions,
-  selectOptionsLoading
+  selectOptionsLoading,
+  selectRecentSearches
 } from '../selectors'
 
 describe('selectAutocompleteDomain', () => {
@@ -42,5 +43,18 @@ describe('optionsLoading', () => {
       }
     })
     expect(selectors(mockedState)).toEqual(optionsLoading)
+  })
+})
+
+describe('RecentSearches', () => {
+  const selectors = selectRecentSearches()
+  it('should select the recentSearches', () => {
+    const recentSearches = fromJS([{ search: 1 }])
+    const mockedState = fromJS({
+      autocomplete: {
+        recentSearches
+      }
+    })
+    expect(selectors(mockedState)).toEqual(recentSearches)
   })
 })
