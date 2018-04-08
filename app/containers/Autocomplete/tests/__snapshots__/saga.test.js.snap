@@ -37,3 +37,119 @@ Object {
   Symbol(Symbol.iterator): [Function],
 }
 `;
+
+exports[`Autocomplete Saga fetchRecentSearchedSaga fetchRecentSearched should match the snapshot getting from storage 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/GET_RECENT_SEARCH, fetchRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga fetchRecentSearchedSaga fetchRecentSearched should match the snapshot getting from storage 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "Boilerplate/App/RECENT_SEARCH",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Autocomplete Saga fetchRecentSearchedSaga fetchRecentSearched should set setRecentSearchAction with empty 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/GET_RECENT_SEARCH, fetchRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga fetchRecentSearchedSaga fetchRecentSearched should set setRecentSearchAction with result 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/GET_RECENT_SEARCH, fetchRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga updateRecentSearchedSaga updateRecentSearched should call fetchRecentSearched() 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/UPDATE_RECENT_SEARCH, updateRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga updateRecentSearchedSaga updateRecentSearched should call fetchRecentSearched() 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "Boilerplate/App/RECENT_SEARCH",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Autocomplete Saga updateRecentSearchedSaga updateRecentSearched should match the only to payload 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/UPDATE_RECENT_SEARCH, updateRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga updateRecentSearchedSaga updateRecentSearched should match the setting to storage 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/UPDATE_RECENT_SEARCH, updateRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga updateRecentSearchedSaga updateRecentSearched should match the snapshot getting from storage 1`] = `
+Object {
+  "@@redux-saga/HELPER": true,
+  "name": "takeLatest(app/Autocomplete/UPDATE_RECENT_SEARCH, updateRecentSearched)",
+  "next": [Function],
+  "return": [Function],
+  "throw": [Function],
+  Symbol(Symbol.iterator): [Function],
+}
+`;
+
+exports[`Autocomplete Saga updateRecentSearchedSaga updateRecentSearched should match the snapshot getting from storage 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "Boilerplate/App/RECENT_SEARCH",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;

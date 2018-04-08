@@ -7,12 +7,16 @@
 import { fromJS } from 'immutable'
 import {
   GET_AUTOCOMPLETE,
-  SET_AUTOCOMPLETE
+  SET_AUTOCOMPLETE,
+
+  SET_RECENT_SEARCH
 } from './constants'
 
 const initialState = fromJS({
   options: [],
-  optionsLoading: false
+  optionsLoading: false,
+
+  recentSearches: []
 })
 
 function autocompleteReducer (state = initialState, action) {
@@ -25,6 +29,10 @@ function autocompleteReducer (state = initialState, action) {
       return state
         .set('optionsLoading', false)
         .set('options', fromJS(action.payload))
+
+    case SET_RECENT_SEARCH:
+      return state
+        .set('recentSearches', fromJS(action.payload))
 
     default:
       return state

@@ -22,8 +22,15 @@ const selectOptionsLoading = () => createSelector(
   selectAutocompleteDomain,
   (substate) => substate.get('optionsLoading')
 )
+
+const selectRecentSearches = () => createSelector(
+  selectAutocompleteDomain,
+  (substate) => substate.get('recentSearches')
+)
+
 export {
   selectAutocompleteDomain,
   selectOptions,
-  selectOptionsLoading
+  selectOptionsLoading,
+  selectRecentSearches
 }

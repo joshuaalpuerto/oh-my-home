@@ -21,21 +21,27 @@ import saga from './saga'
 import messages from './messages'
 
 import {
-  getAutoCompleteAction
+  getAutoCompleteAction,
+  getRecentSearchAction,
+  updateRecentSearchAction
 } from './actions'
 import {
   selectOptions,
-  selectOptionsLoading
+  selectOptionsLoading,
+  selectRecentSearches
 } from './selectors'
 
-const Option = Select.Option
+const { Option, OptGroup } = Select
 
 export class Autocomplete extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
     defaultValue: PropTypes.string,
     onUpdate: PropTypes.func.isRequired,
     options: PropTypes.object.isRequired,
+    recentSearches: PropTypes.object.isRequired,
     optionsLoading: PropTypes.bool.isRequired,
+    getRecentSearch: PropTypes.func.isRequired,
+    updateRecentSearch: PropTypes.func.isRequired,
     getAutoComplete: PropTypes.func.isRequired,
     intl: intlShape.isRequired
   }
@@ -63,22 +69,26 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
   }
 
   _handleSelection = (description, { key: value }) => {
-    const { onUpdate } = this.props
-    onUpdate({ value, description })
+    const { onUpdate, updateRecentSearch } = this.props
+    const payload = { value, description }
+    onUpdate(payload)
+    updateRecentSearch(payload)
   }
 
   componentDidMount () {
-    const { defaultPlaceValue, defaultPlaceId } = this.props
+    const { defaultPlaceValue, defaultPlaceId, getRecentSearch } = this.props
     if (defaultPlaceValue) {
       this.props.getAutoComplete(defaultPlaceValue)
       this._handleSelection(defaultPlaceValue, {
         key: defaultPlaceId
       })
     }
+
+    getRecentSearch()
   }
 
   render () {
-    const { options, optionsLoading, intl, defaultPlaceValue } = this.props
+    const { options, optionsLoading, recentSearches, intl, defaultPlaceValue } = this.props
     return (
       <Select
         allowClear
@@ -93,13 +103,24 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
         onSelect={this._handleSelection}
         style={{ width: '100%' }}
       >
-        {
+        <OptGroup label={intl.formatMessage(messages.results)}>
+          {
           options.map((option) => (
             <Option key={option.get('place_id')} value={option.get('description')}>
               {option.get('description')}
             </Option>
           ))
         }
+        </OptGroup>
+        <OptGroup label={intl.formatMessage(messages.recentSearches)}>
+          {
+          recentSearches.map((option) => (
+            <Option key={option.get('value')} value={option.get('description')}>
+              {option.get('description')}
+            </Option>
+          ))
+        }
+        </OptGroup>
       </Select>
     )
   }
@@ -107,12 +128,15 @@ export class Autocomplete extends React.PureComponent { // eslint-disable-line r
 
 const mapStateToProps = createStructuredSelector({
   options: selectOptions(),
-  optionsLoading: selectOptionsLoading()
+  optionsLoading: selectOptionsLoading(),
+  recentSearches: selectRecentSearches()
 })
 
 export function mapDispatchToProps (dispatch) {
   return {
     getAutoComplete: (str) => dispatch(getAutoCompleteAction(str)),
+    getRecentSearch: () => dispatch(getRecentSearchAction()),
+    updateRecentSearch: (search) => dispatch(updateRecentSearchAction(search)),
     dispatch
   }
 }
