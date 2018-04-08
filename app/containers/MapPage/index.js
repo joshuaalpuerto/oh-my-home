@@ -73,7 +73,6 @@ export class MapPage extends React.PureComponent { // eslint-disable-line react/
       placeId,
       flatType
     })
-
     getPlace({ placeId })
   }
 
